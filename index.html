@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ScopeGuard — Scope Creep Calculator & Change Order Protection Engine</title>
+  <meta name="description" content="Calculate your unbilled scope creep loss, assess project risk, and generate client-ready Change Orders in seconds. The #1 free tool for freelancers, consultants, and digital agencies.">
+  <meta name="keywords" content="scope creep calculator, freelance change order template, out of scope billing, client contract risk, agency profit protection">
+  <meta name="author" content="Autonomous AI Business Factory">
+
+  <!-- OpenGraph / Social Meta Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ScopeGuard — Stop Bleeding Revenue to Scope Creep">
+  <meta property="og:description" content="Calculate your unbilled financial loss and generate legally sound Change Orders instantly. Built for freelancers and agencies.">
+  <meta property="og:url" content="https://scopeguard.app">
+
+  <!-- Schema.org WebApplication structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "ScopeGuard",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0.00",
+      "priceCurrency": "USD"
+    },
+    "description": "Scope creep loss calculator and automated freelance change order generator."
+  }
+  </script>
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <span class="brand-icon">🛡️</span>
+        <span class="brand-name">Scope<strong>Guard</strong></span>
+        <span class="badge badge-free">100% Free Tool</span>
+      </div>
+
+      <div class="nav-links">
+        <a href="#calculator" class="nav-link active" data-tab="calc-view">Loss Calculator</a>
+        <a href="#change-order" class="nav-link" data-tab="co-view">Change Order Builder</a>
+        <a href="#risk-quiz" class="nav-link" data-tab="quiz-view">Risk Diagnostic</a>
+        <a href="#scripts" class="nav-link" data-tab="scripts-view">Email Scripts</a>
+        <a href="#pricing" class="nav-link" data-tab="pro-view">Pro Toolkit</a>
+      </div>
+
+      <div class="nav-actions">
+        <button id="theme-toggle" class="btn-icon" title="Toggle Theme" aria-label="Toggle Theme">
+          <span class="theme-icon">🌙</span>
+        </button>
+        <button class="btn btn-primary btn-sm" onclick="openProModal()">
+          <span>Unlock Pro</span>
+          <span class="hot-tag">$9</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Header -->
+  <header class="hero-section">
+    <div class="container hero-content">
+      <div class="hero-badge">
+        <span class="pulse-dot"></span>
+        <span>Average freelancer loses $4,850/year to unpaid client tweaks</span>
+      </div>
+      <h1 class="hero-title">
+        Stop Bleeding Profit to <span class="gradient-text">"Quick Favor"</span> Scope Creep
+      </h1>
+      <p class="hero-subtitle">
+        Calculate your exact financial revenue leak, assess project risk before signing, and generate client-ready, professional Change Orders in under 60 seconds.
+      </p>
+
+      <!-- Key Metric Highlights -->
+      <div class="hero-stats-grid">
+        <div class="stat-card">
+          <div class="stat-num text-danger" id="hero-stat-loss">$0</div>
+          <div class="stat-label">Calculated Unbilled Loss</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num text-warning" id="hero-stat-hours">0 hrs</div>
+          <div class="stat-label">Unpaid Extra Work</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num text-success" id="hero-stat-recovered">$0</div>
+          <div class="stat-label">Recoverable With 1 Change Order</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Application Container -->
+  <main class="container main-content">
+
+    <!-- Tab Navigation Bar for Mobile & Quick Switch -->
+    <div class="tab-switcher">
+      <button class="tab-btn active" onclick="switchView('calc-view')">
+        <span class="tab-icon">🧮</span> 1. Loss Calculator
+      </button>
+      <button class="tab-btn" onclick="switchView('co-view')">
+        <span class="tab-icon">📄</span> 2. Change Order Builder
+      </button>
+      <button class="tab-btn" onclick="switchView('quiz-view')">
+        <span class="tab-icon">⚠️</span> 3. Risk Diagnostic
+      </button>
+      <button class="tab-btn" onclick="switchView('scripts-view')">
+        <span class="tab-icon">💬</span> 4. Defense Scripts
+      </button>
+      <button class="tab-btn" onclick="switchView('affiliate-view')">
+        <span class="tab-icon">⚡</span> 5. Recommended Tools
+      </button>
+    </div>
+
+    <!-- VIEW 1: SCOPE CREEP LOSS CALCULATOR -->
+    <section id="calc-view" class="view-panel active">
+      <div class="panel-header">
+        <div>
+          <h2>Interactive Scope Creep & Revenue Leak Calculator</h2>
+          <p class="text-muted">Discover how much revenue your business gives away for free on fixed-price and hourly projects.</p>
+        </div>
+        <button class="btn btn-secondary btn-sm" onclick="resetCalculator()">Reset Defaults</button>
+      </div>
+
+      <div class="calc-grid">
+        <!-- Input Form Column -->
+        <div class="card card-inputs">
+          <h3 class="card-title">Project & Hourly Parameters</h3>
+
+          <div class="form-group">
+            <div class="label-row">
+              <label for="calc-hourly-rate">Your Effective Hourly Rate ($)</label>
+              <span class="slider-value" id="val-hourly-rate">$75/hr</span>
+            </div>
+            <input type="range" id="calc-hourly-rate" min="20" max="300" step="5" value="75">
+          </div>
+
+          <div class="form-group">
+            <div class="label-row">
+              <label for="calc-unbilled-hours">Unbilled "Quick Requests" per Week</label>
+              <span class="slider-value" id="val-unbilled-hours">4.0 hrs/wk</span>
+            </div>
+            <input type="range" id="calc-unbilled-hours" min="0.5" max="25" step="0.5" value="4">
+            <small class="form-hint">Minor tweaks, extra revisions, impromptu Zoom calls, off-scope slack messages.</small>
+          </div>
+
+          <div class="form-group">
+            <div class="label-row">
+              <label for="calc-project-weeks">Project Duration (Weeks)</label>
+              <span class="slider-value" id="val-project-weeks">6 weeks</span>
+            </div>
+            <input type="range" id="calc-project-weeks" min="1" max="52" step="1" value="6">
+          </div>
+
+          <div class="form-group">
+            <div class="label-row">
+              <label for="calc-contract-value">Total Agreed Contract Budget ($)</label>
+              <span class="slider-value" id="val-contract-value">$4,500</span>
+            </div>
+            <input type="range" id="calc-contract-value" min="500" max="50000" step="250" value="4500">
+          </div>
+
+          <div class="form-group">
+            <div class="label-row">
+              <label for="calc-annual-projects">Active Projects Managed per Year</label>
+              <span class="slider-value" id="val-annual-projects">8 projects/yr</span>
+            </div>
+            <input type="range" id="calc-annual-projects" min="1" max="40" step="1" value="8">
+          </div>
+        </div>
+
+        <!-- Output Analytics Column -->
+        <div class="card card-results">
+          <h3 class="card-title">The Real Cost of Your "Favors"</h3>
+
+          <div class="results-banner danger-banner">
+            <div class="banner-tag">Total Unbilled Project Loss</div>
+            <div class="banner-amount" id="res-project-loss">$1,800.00</div>
+            <div class="banner-subtext" id="res-hours-wasted">24 unpaid hours absorbed on this project</div>
+          </div>
+
+          <div class="metric-breakdown-list">
+            <div class="metric-row">
+              <span class="metric-name">Effective Margin Squeeze:</span>
+              <span class="metric-val text-danger" id="res-margin-squeeze">-28.6% Profit Reduction</span>
+            </div>
+            <div class="metric-row">
+              <span class="metric-name">Real Hourly Rate Dropped To:</span>
+              <span class="metric-val text-warning" id="res-real-rate">$53.57 / hr (Agreed: $75)</span>
+            </div>
+            <div class="metric-row">
+              <span class="metric-name">Annualized Revenue Drain (All Projects):</span>
+              <span class="metric-val text-danger" id="res-annual-leak">$14,400.00 / year</span>
+            </div>
+            <div class="metric-row">
+              <span class="metric-name">Equivalent Free Work Given Away:</span>
+              <span class="metric-val" id="res-free-weeks">4.8 Entire Work Weeks</span>
+            </div>
+          </div>
+
+          <div class="action-box">
+            <p><strong>Ready to recover this $1,800?</strong> Convert this extra work into a paid agreement right now.</p>
+            <button class="btn btn-primary btn-block" onclick="transferToChangeOrder()">
+              🚀 Auto-Generate Change Order For This Work
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 2: CHANGE ORDER BUILDER -->
+    <section id="co-view" class="view-panel">
+      <div class="panel-header">
+        <div>
+          <h2>Client-Ready Change Order & Amendment Generator</h2>
+          <p class="text-muted">Formalize out-of-scope requests in 60 seconds with clear pricing, revision caps, and timeline adjustments.</p>
+        </div>
+        <div class="btn-group">
+          <button class="btn btn-secondary btn-sm" onclick="loadSampleChangeOrder()">Load Sample Data</button>
+          <button class="btn btn-secondary btn-sm" onclick="clearChangeOrderForm()">Clear Form</button>
+        </div>
+      </div>
+
+      <div class="builder-layout">
+        <!-- Form Inputs -->
+        <div class="card builder-form">
+          <h3 class="card-title">1. Agreement & Client Metadata</h3>
+
+          <div class="grid-2">
+            <div class="form-group">
+              <label for="co-client-name">Client Name / Company *</label>
+              <input type="text" id="co-client-name" placeholder="e.g. Apex Digital Ltd. / Sarah Jenkins" required>
+            </div>
+            <div class="form-group">
+              <label for="co-provider-name">Your Business / Freelancer Name *</label>
+              <input type="text" id="co-provider-name" placeholder="e.g. Shezi Studio / John Doe" required>
+            </div>
+          </div>
+
+          <div class="grid-3">
+            <div class="form-group">
+              <label for="co-project-title">Project Name *</label>
+              <input type="text" id="co-project-title" placeholder="e.g. Custom Shopify Redesign">
+            </div>
+            <div class="form-group">
+              <label for="co-number">Change Order #</label>
+              <input type="text" id="co-number" value="CO-001">
+            </div>
+            <div class="form-group">
+              <label for="co-date">Effective Date</label>
+              <input type="date" id="co-date">
+            </div>
+          </div>
+
+          <h3 class="card-title mt-4">2. Requested Out-of-Scope Scope Details</h3>
+
+          <div class="form-group">
+            <label for="co-scope-desc">Scope Description (Exact Extra Features or Tasks Requested) *</label>
+            <textarea id="co-scope-desc" rows="3" placeholder="Describe the out-of-scope deliverable clearly (e.g. Integration of multi-currency checkout gateway, custom tax calculator module, and 3 additional animated landing page sections not in original Statement of Work)."></textarea>
+          </div>
+
+          <div class="grid-3">
+            <div class="form-group">
+              <label for="co-fee-type">Billing Method</label>
+              <select id="co-fee-type" onchange="toggleFeeInputs()">
+                <option value="fixed">Fixed Price Lump-Sum</option>
+                <option value="hourly">Hourly Billing with Cap</option>
+              </select>
+            </div>
+            <div class="form-group" id="group-fixed-fee">
+              <label for="co-fixed-amount">Additional Fee ($ USD) *</label>
+              <input type="number" id="co-fixed-amount" value="850" min="0" step="50">
+            </div>
+            <div class="form-group" id="group-hourly-rate" style="display:none;">
+              <label for="co-rate-amount">Rate ($/hr) × Hours Est.</label>
+              <div class="inline-inputs">
+                <input type="number" id="co-hourly-rate" placeholder="Rate ($)" value="85" style="width: 50%;">
+                <input type="number" id="co-estimated-hours" placeholder="Hours" value="10" style="width: 50%;">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="co-timeline-extension">Timeline Extension (Days)</label>
+              <input type="number" id="co-timeline-extension" value="5" min="0" placeholder="e.g. 5 business days">
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="form-group">
+              <label for="co-revision-cap">Revision Rounds Included</label>
+              <select id="co-revision-cap">
+                <option value="1 round of minor revisions">1 round of minor revisions</option>
+                <option value="2 rounds of consolidated revisions" selected>2 rounds of consolidated revisions</option>
+                <option value="0 (Additional revisions billed at standard hourly rate)">Strictly 0 (Further changes billable)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="co-payment-terms">Payment Milestone</label>
+              <select id="co-payment-terms">
+                <option value="100% upfront prior to commencing out-of-scope work">100% upfront prior to commencing</option>
+                <option value="50% deposit upfront, 50% upon deliverable completion" selected>50% deposit upfront, 50% on delivery</option>
+                <option value="Added to the next scheduled milestone invoice">Added to next milestone invoice</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="co-special-notes">Protective Clauses & Dependencies</label>
+            <textarea id="co-special-notes" rows="2" placeholder="e.g. Work will initiate upon client delivery of API credentials and deposit clearance. Any delays in client feedback extend deadline by equivalent business days."></textarea>
+          </div>
+
+          <div class="btn-cluster mt-3">
+            <button class="btn btn-primary" onclick="updateChangeOrderPreview()">
+              🔄 Refresh Preview
+            </button>
+            <button class="btn btn-success" onclick="printChangeOrder()">
+              🖨️ Print / Save Clean PDF
+            </button>
+            <button class="btn btn-secondary" onclick="copyMarkdownDocument()">
+              📋 Copy Markdown
+            </button>
+          </div>
+        </div>
+
+        <!-- Live Document Preview -->
+        <div class="card builder-preview">
+          <div class="preview-toolbar">
+            <span class="preview-badge">Live Document Output</span>
+            <div class="toolbar-btns">
+              <button class="btn btn-xs btn-outline" onclick="copyChangeOrderText()">Copy Plain Text</button>
+            </div>
+          </div>
+
+          <!-- Printable Document Container -->
+          <div class="document-sheet" id="printable-change-order">
+            <div class="doc-header">
+              <div class="doc-title-box">
+                <h1 class="doc-main-title">CHANGE ORDER AMENDMENT</h1>
+                <div class="doc-sub-num" id="doc-out-number">Reference: CO-001</div>
+              </div>
+              <div class="doc-meta-box">
+                <div><strong>Date:</strong> <span id="doc-out-date">September 21, 2026</span></div>
+                <div><strong>Status:</strong> <span class="doc-status">PENDING WRITTEN AUTHORIZATION</span></div>
+              </div>
+            </div>
+
+            <hr class="doc-divider">
+
+            <div class="doc-parties-grid">
+              <div class="doc-party-card">
+                <div class="doc-party-label">CLIENT / REQUESTER:</div>
+                <div class="doc-party-val" id="doc-out-client">Apex Digital Ltd.</div>
+              </div>
+              <div class="doc-party-card">
+                <div class="doc-party-label">SERVICE PROVIDER / CONTRACTOR:</div>
+                <div class="doc-party-val" id="doc-out-provider">Shezi Studio</div>
+              </div>
+            </div>
+
+            <div class="doc-section">
+              <div class="doc-section-title">1. ORIGINAL CONTRACT REFERENCE</div>
+              <div class="doc-section-body" id="doc-out-project">
+                This Change Order amends the original Master Services Agreement / Statement of Work for: <strong>Custom Shopify Redesign</strong>.
+              </div>
+            </div>
+
+            <div class="doc-section">
+              <div class="doc-section-title">2. DETAILED SCOPE OF ADDITIONAL WORK</div>
+              <div class="doc-section-body doc-highlight-box" id="doc-out-scope">
+                Integration of multi-currency checkout gateway, custom tax calculator module, and 3 additional animated landing page sections not in original Statement of Work.
+              </div>
+            </div>
+
+            <div class="doc-section">
+              <div class="doc-section-title">3. COMMERCIAL & TIMELINE TERMS</div>
+              <table class="doc-table">
+                <thead>
+                  <tr>
+                    <th>Commercial Item</th>
+                    <th>Specification / Value</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Additional Compensation:</strong></td>
+                    <td id="doc-out-fee" class="text-bold text-success">$850.00 USD (Fixed Lump-Sum)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Payment Terms:</strong></td>
+                    <td id="doc-out-payment">50% deposit upfront, 50% upon deliverable completion</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Timeline Adjustment:</strong></td>
+                    <td id="doc-out-timeline">+5 business days added to original milestone completion date</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Included Revisions:</strong></td>
+                    <td id="doc-out-revisions">2 rounds of consolidated revisions</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="doc-section">
+              <div class="doc-section-title">4. TERMS & DEPENDENCY CLAUSES</div>
+              <div class="doc-terms-legal" id="doc-out-terms">
+                1. Work on this amendment shall commence solely upon receipt of written sign-off and required deposit.<br>
+                2. All terms, intellectual property covenants, and liabilities established in the primary agreement remain in full effect.<br>
+                3. Delays in client feedback, assets, or third-party API credentials will adjust final delivery by an equal duration.<br>
+                <span id="doc-out-special-note"></span>
+              </div>
+            </div>
+
+            <div class="doc-signatures">
+              <div class="signature-block">
+                <div class="sig-line"></div>
+                <div class="sig-caption">Authorized Client Signature</div>
+                <div class="sig-name" id="doc-sig-client">Name: ______________________</div>
+                <div class="sig-date">Date: ______________________</div>
+              </div>
+              <div class="signature-block">
+                <div class="sig-line"></div>
+                <div class="sig-caption">Authorized Contractor Signature</div>
+                <div class="sig-name" id="doc-sig-provider">Name: ______________________</div>
+                <div class="sig-date">Date: ______________________</div>
+              </div>
+            </div>
+
+            <div class="doc-footer">
+              Generated securely via ScopeGuard Engine • Document Hash: SG-<span id="doc-hash">894F2</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 3: SCOPE CREEP RISK ASSESSMENT DIAGNOSTIC -->
+    <section id="quiz-view" class="view-panel">
+      <div class="panel-header">
+        <div>
+          <h2>Project Scope Risk Diagnostic (Pre-Signing Audit)</h2>
+          <p class="text-muted">Evaluate any prospective client project across 8 critical risk dimensions before signing a contract.</p>
+        </div>
+        <button class="btn btn-secondary btn-sm" onclick="resetRiskQuiz()">Reset Quiz</button>
+      </div>
+
+      <div class="quiz-container card">
+        <div class="quiz-questions" id="quiz-questions-box">
+          <!-- Dynamically injected via JS -->
+        </div>
+
+        <div class="quiz-results-card" id="quiz-results-box" style="display:none;">
+          <div class="risk-meter-wrapper">
+            <div class="risk-score-circle" id="risk-score-badge">
+              <span class="risk-number" id="quiz-score-val">0</span>
+              <span class="risk-total">/ 100</span>
+            </div>
+            <div class="risk-verdict-content">
+              <h3 id="quiz-verdict-title">Risk Assessment Pending</h3>
+              <p id="quiz-verdict-desc" class="text-muted"></p>
+            </div>
+          </div>
+
+          <div class="actionable-clauses-box mt-4">
+            <h4>Recommended Protective Clauses to Insert in Your Contract:</h4>
+            <ul id="quiz-clauses-list" class="clauses-list"></ul>
+          </div>
+
+          <button class="btn btn-primary mt-3" onclick="loadQuizClausesToChangeOrder()">
+            📄 Pre-fill Change Order Builder with These Safeguards
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 4: BATTLE-TESTED SCOPE DEFENSE EMAIL SCRIPTS -->
+    <section id="scripts-view" class="view-panel">
+      <div class="panel-header">
+        <div>
+          <h2>Battle-Tested Scope Defense Email Scripts</h2>
+          <p class="text-muted">Word-for-word tactical responses for turning out-of-scope requests into paid opportunities without alienating the client.</p>
+        </div>
+      </div>
+
+      <div class="scripts-grid" id="scripts-catalog">
+        <!-- Script 1 -->
+        <div class="card script-card">
+          <div class="script-header">
+            <span class="script-tag tag-standard">Scenario 1</span>
+            <h3>"Can you just quickly add this small feature?"</h3>
+          </div>
+          <p class="script-context">Use when a client slips in extra deliverables mid-project under the guise of a "quick tweak".</p>
+          <div class="script-body" id="script-text-1">
+Hi [Client Name],
+
+Thanks for sending this over! That feature would definitely add great value to the project.
+
+Because this falls outside our original Statement of Work (which is focused on [Core Deliverable]), we have two straightforward paths forward:
+
+1. **Include it in Phase 2:** We keep our current launch date intact, finish the agreed deliverables, and queue this up immediately as our next sprint.
+2. **Execute a Change Order now:** We can add this into our current milestone right away for an additional [Amount, e.g. $650] and a [Number, e.g. 3-day] timeline extension.
+
+Let me know which option aligns best with your launch schedule, and I'll send over the details!
+
+Best regards,
+[Your Name]
+          </div>
+          <button class="btn btn-secondary btn-sm btn-block" onclick="copyScript('script-text-1')">📋 Copy Script to Clipboard</button>
+        </div>
+
+        <!-- Script 2 -->
+        <div class="card script-card">
+          <div class="script-header">
+            <span class="script-tag tag-warning">Scenario 2</span>
+            <h3>"We've exceeded the agreed revision limit"</h3>
+          </div>
+          <p class="script-context">Use when a client requests round 4 or 5 of feedback when the contract specified 2 rounds.</p>
+          <div class="script-body" id="script-text-2">
+Hi [Client Name],
+
+I've reviewed the latest feedback round. We've now completed the [Number, e.g. 2] revision rounds included in our project agreement.
+
+To make sure we get every remaining refinement exactly right without delaying the final release, I can execute these additional edits at our standard hourly rate of [$XX/hr] (estimated at [X] hours), or as a fixed refinement sprint for [$XXX].
+
+Please let me know if you'd like me to proceed with these updates under this arrangement!
+
+Best regards,
+[Your Name]
+          </div>
+          <button class="btn btn-secondary btn-sm btn-block" onclick="copyScript('script-text-2')">📋 Copy Script to Clipboard</button>
+        </div>
+
+        <!-- Script 3 -->
+        <div class="card script-card">
+          <div class="script-header">
+            <span class="script-tag tag-danger">Scenario 3</span>
+            <h3>"A new stakeholder joined and wants changes"</h3>
+          </div>
+          <p class="script-context">Use when a new executive or manager enters mid-project and tries to overhaul approved work.</p>
+          <div class="script-body" id="script-text-3">
+Hi [Client Name],
+
+It's great to have [Stakeholder Name]'s input on the project.
+
+Since the previous milestone was formally approved on [Date], incorporating these new directional changes will require revisiting finalized architecture.
+
+I've drafted a streamlined Change Order outlining the required hours ([X] hours / [$XXX]) and timeline impact ([X] days) to incorporate [Stakeholder Name]'s requests without compromising build quality.
+
+I've attached the Change Order for your review—once signed, we will integrate these updates immediately.
+
+Best regards,
+[Your Name]
+          </div>
+          <button class="btn btn-secondary btn-sm btn-block" onclick="copyScript('script-text-3')">📋 Copy Script to Clipboard</button>
+        </div>
+
+        <!-- Script 4 -->
+        <div class="card script-card">
+          <div class="script-header">
+            <span class="script-tag tag-success">Scenario 4</span>
+            <h3>"Polite pre-project scope boundary reminder"</h3>
+          </div>
+          <p class="script-context">Include with your project kickoff email to set crystal-clear expectations early.</p>
+          <div class="script-body" id="script-text-4">
+Hi [Client Name],
+
+We're thrilled to kick off [Project Name]!
+
+To guarantee we hit our launch deadline of [Date] on budget, our team works strictly within the agreed Statement of Work. If any new creative ideas or feature requests pop up during the build (which happens often!), we'll capture them in our "Phase 2 Backlog" or provide an immediate Change Order estimate so you always maintain complete control over budget and timeline.
+
+Looking forward to building something extraordinary together!
+
+Best regards,
+[Your Name]
+          </div>
+          <button class="btn btn-secondary btn-sm btn-block" onclick="copyScript('script-text-4')">📋 Copy Script to Clipboard</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 5: CURATED AFFILIATE TOOLKIT & MONETIZATION -->
+    <section id="affiliate-view" class="view-panel">
+      <div class="panel-header">
+        <div>
+          <h2>Recommended Stack for Bulletproof Freelancers & Agencies</h2>
+          <p class="text-muted">Handpicked, verified platforms for automated invoicing, legally binding electronic signatures, and time tracking.</p>
+        </div>
+      </div>
+
+      <div class="tools-grid">
+        <div class="tool-card">
+          <div class="tool-badge">Essential Invoicing</div>
+          <h3>Stripe Invoicing & Billing</h3>
+          <p>Get paid on Change Orders instantly with auto-reconciliation, credit card payments, and ACH bank transfers.</p>
+          <ul class="tool-features">
+            <li>✓ 1-Click invoice links for Change Orders</li>
+            <li>✓ Automated late payment reminders</li>
+            <li>✓ Global currency acceptance</li>
+          </ul>
+          <a href="https://stripe.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-block" onclick="trackAffiliateClick('Stripe')">
+            Visit Stripe Invoicing →
+          </a>
+        </div>
+
+        <div class="tool-card popular-tool">
+          <div class="tool-badge badge-hot">All-in-One Freelance Suite</div>
+          <h3>Bonsai / HoneyBook Contract OS</h3>
+          <p>Ironclad freelance contracts, integrated electronic signatures, and milestone change order management.</p>
+          <ul class="tool-features">
+            <li>✓ Lawyer-vetted contract templates</li>
+            <li>✓ Integrated e-signatures on any device</li>
+            <li>✓ Auto-escrow milestone payments</li>
+          </ul>
+          <a href="https://www.hellobonsai.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-block" onclick="trackAffiliateClick('Bonsai')">
+            Try Free Contract Suite →
+          </a>
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-badge">Time & Leak Tracking</div>
+          <h3>Toggl Track / Clockify</h3>
+          <p>Track unbilled client requests and out-of-scope revisions effortlessly to prove exact hours spent.</p>
+          <ul class="tool-features">
+            <li>✓ 1-Click timer for out-of-scope tasks</li>
+            <li>✓ Exportable client proof reports</li>
+            <li>✓ Team billable rate tracking</li>
+          </ul>
+          <a href="https://toggl.com/track/" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-block" onclick="trackAffiliateClick('Toggl')">
+            Get Free Time Tracker →
+          </a>
+        </div>
+      </div>
+
+      <!-- Lead Magnet Newsletter Box -->
+      <div class="lead-magnet-card card mt-5">
+        <div class="lead-content">
+          <span class="lead-badge">Free VIP Resource</span>
+          <h2>Get the Complete "Agency Scope Creep Defense Vault"</h2>
+          <p>Download 12 lawyer-vetted contract clauses, 8 client negotiation scripts, and our master SOW template (PDF + Google Docs format).</p>
+
+          <form class="lead-form" onsubmit="handleLeadCapture(event)">
+            <input type="email" id="lead-email" placeholder="Enter your work email..." required>
+            <button type="submit" class="btn btn-success">Get Free Vault Access</button>
+          </form>
+          <small class="text-muted">Zero spam. Unsubscribe anytime with 1 click.</small>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Pro Upgrade Modal -->
+  <div class="modal-overlay" id="pro-modal">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeProModal()">✕</button>
+      <div class="modal-badge">SCOPEGUARD PRO</div>
+      <h2 class="modal-title">Never Lose Another Dollar to Unpaid Client Requests</h2>
+      <p class="modal-sub">Upgrade to the complete agency toolkit. One recovered change order pays for this 50x over.</p>
+
+      <div class="pricing-card-grid">
+        <div class="pricing-card">
+          <div class="tier-name">Monthly Pro</div>
+          <div class="tier-price">$9 <span>/ month</span></div>
+          <ul class="tier-perks">
+            <li>✓ Unlimited Custom Change Orders</li>
+            <li>✓ Custom Agency Branding & Logo on PDFs</li>
+            <li>✓ 20+ Master Scope Defense Email Scripts</li>
+            <li>✓ Full Master Services Agreement (MSA) Builder</li>
+            <li>✓ Cloud Project History & Local Vault</li>
+          </ul>
+          <button class="btn btn-outline btn-block" onclick="simulateCheckout('monthly_9')">
+            Subscribe for $9/mo
+          </button>
+        </div>
+
+        <div class="pricing-card highlighted-pricing">
+          <div class="popular-ribbon">BEST VALUE</div>
+          <div class="tier-name">Lifetime Agency Pass</div>
+          <div class="tier-price">$29 <span>one-time</span></div>
+          <ul class="tier-perks">
+            <li>✓ Everything in Monthly Pro</li>
+            <li>✓ <strong>Lifetime Access</strong> (No Recurring Fees)</li>
+            <li>✓ White-label Client Portal Ready</li>
+            <li>✓ Multi-Currency Support (USD, EUR, GBP, CAD)</li>
+            <li>✓ Priority Email Support</li>
+          </ul>
+          <button class="btn btn-primary btn-block" onclick="simulateCheckout('lifetime_29')">
+            Get Lifetime Pass ($29)
+          </button>
+        </div>
+      </div>
+
+      <div class="coupon-row">
+        <input type="text" id="coupon-code" placeholder="Enter Promo Code (Try: AUTONOMOUS100)">
+        <button class="btn btn-secondary" onclick="applyCoupon()">Apply</button>
+      </div>
+      <div id="coupon-feedback"></div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <span class="brand-icon">🛡️</span>
+        <span>Scope<strong>Guard</strong></span>
+        <p class="footer-desc">The open business utility engineered for freelancers, consultants, and independent agencies to protect margins and eliminate unpaid scope creep.</p>
+      </div>
+
+      <div class="footer-meta">
+        <div class="ops-badge">
+          <span class="ops-dot"></span>
+          <span>Autonomous AI Business Factory • Zero-Cost Public Utility</span>
+        </div>
+        <div class="footer-copyright">
+          © 2026 ScopeGuard. All calculations and documents generated strictly on client device for 100% data privacy.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

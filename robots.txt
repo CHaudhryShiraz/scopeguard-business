@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://scopeguard.app/sitemap.xml
