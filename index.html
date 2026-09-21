@@ -286,7 +286,7 @@
         <div class="btn-group">
           <button class="btn btn-secondary btn-sm" onclick="saveDraftJSON()" title="Export JSON Draft">💾 Save Draft</button>
           <button class="btn btn-secondary btn-sm" onclick="triggerLoadDraftJSON()" title="Load JSON Draft">📂 Load Draft</button>
-          <input type="file" id="draft-file-input" accept=".json" style="display:none" onchange="handleDraftFileSelect(event)">
+          <input type="file" id="draft-file-input" accept=".json" style="display:none" aria-label="Upload Change Order JSON draft" onchange="handleDraftFileSelect(event)">
           <button class="btn btn-secondary btn-sm" onclick="loadSampleChangeOrder()">Sample Data</button>
           <button class="btn btn-secondary btn-sm" onclick="clearChangeOrderForm()">Clear</button>
         </div>
@@ -749,6 +749,10 @@ Best regards,
         </div>
       </div>
 
+      <p class="text-muted text-center" style="font-size: 11px; margin-top: 14px; margin-bottom: 0;">
+        Transparency Disclosure: Some links may be partner or affiliate links that support the free ongoing development of ScopeGuard at zero additional cost to you.
+      </p>
+
       <!-- Lead Magnet Newsletter Box -->
       <div class="lead-magnet-card card mt-5">
         <div class="lead-content">
@@ -926,7 +930,7 @@ Best regards,
 
       <div class="vault-clause-card">
         <div class="vault-clause-header">
-          <div class="vault-clause-title">🔒 1. Zero-Knowledge Client-Side Data Privacy</div>
+          <div class="vault-clause-title">🔒 1. Privacy-First Client-Side Data Processing</div>
         </div>
         <p style="font-size: 13px; color: var(--text-muted); line-height: 1.6;">
           ScopeGuard processes all mathematical calculations, hourly rate analyses, risk diagnostic answers, and Change Order Amendment drafts exclusively in your local browser runtime memory and <code>localStorage</code>. No financial data, client names, project contracts, or business information is ever transmitted to, stored on, or harvested by any remote server or third-party tracking entity.

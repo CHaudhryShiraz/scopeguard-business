@@ -2,7 +2,7 @@
 
 **Version:** 1.0.0 (Free Public Beta / Preview)  
 **Architecture:** Zero-Dependency Client-Side Static Single Page Application (SPA)  
-**Security & Privacy:** 100% Client-Side Execution / Zero-Knowledge Local Persistence  
+**Security & Privacy:** 100% Client-Side Execution / Privacy-First Local Persistence  
 
 ---
 
@@ -18,7 +18,7 @@ ScopeGuard v1.0.0 is released under a **"Deploy Now, Payments Later" (Free Publi
 
 ### Pure Client-Side Architecture
 - **No Node.js runtime or build step required**: Uses standard semantic HTML5, modern CSS3 custom properties with adaptive dark/light themes, and Vanilla ES6+ JavaScript.
-- **Zero-Knowledge Privacy**: Financial figures, hourly rates, client names, project descriptions, and legal amendment drafts are processed strictly in browser memory. No project data or calculation metrics are ever transmitted to any external server.
+- **Privacy-First Client-Side Architecture**: Financial figures, hourly rates, client names, project descriptions, and legal amendment drafts are processed strictly in browser memory. No project data or calculation metrics are ever transmitted to any external server.
 - **Local Persistence Layer**:
   - `sg_theme`: Persistent UI theme choice (`dark` or `light`).
   - `sg_leads`: Locally captured email waitlist entries.
