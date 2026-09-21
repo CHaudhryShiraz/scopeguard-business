@@ -387,43 +387,79 @@ function copyChangeOrderText() {
 }
 
 // ==========================================
-// 6. PROJECT RISK DIAGNOSTIC QUIZ
+// 6. PROJECT RISK DIAGNOSTIC QUIZ (8 CRITICAL DIMENSIONS)
 // ==========================================
 const RiskQuestions = [
   {
     id: 'q1',
-    title: '1. How clearly defined is the project scope & technical specifications?',
+    title: '1. Specification Clarity: How clearly defined is the project scope & technical specifications?',
     options: [
-      { text: 'A. Crystal clear, page-by-page Figma designs and bulletproof written specs', score: 0 },
-      { text: 'B. General outline exists, but specific features and states are left to our discretion', score: 12 },
-      { text: 'C. "We will know what we want when we see it" / High ambiguity', score: 25 }
+      { text: 'A. Crystal clear, page-by-page Figma designs and bulletproof written functional specs', score: 0 },
+      { text: 'B. General outline exists, but specific features and states are left to our discretion', score: 6 },
+      { text: 'C. "We will know what we want when we see it" / High ambiguity and moving targets', score: 12 }
     ]
   },
   {
     id: 'q2',
-    title: '2. How many client decision-makers must approve project milestones?',
+    title: '2. Stakeholder Governance: How many client decision-makers must approve milestones?',
     options: [
-      { text: 'A. Exactly 1 dedicated project owner with full authority', score: 0 },
-      { text: 'B. 2-3 stakeholders who usually agree but occasionally debate', score: 10 },
-      { text: 'C. Committee / Board / Multiple executives who have conflicting visions', score: 25 }
+      { text: 'A. Exactly 1 dedicated project owner with full signing authority', score: 0 },
+      { text: 'B. 2-3 stakeholders who usually agree but occasionally request contrasting tweaks', score: 6 },
+      { text: 'C. Committee / Board / Multiple executives with conflicting priorities and visions', score: 12 }
     ]
   },
   {
     id: 'q3',
-    title: '3. What is the contract revision policy agreed upon?',
+    title: '3. Revision Policy: What revision cap is explicitly agreed in the contract?',
     options: [
       { text: 'A. Explicitly capped at 1 or 2 consolidated rounds in signed contract', score: 0 },
-      { text: 'B. Vague "reasonable revisions" clause mentioned verbally', score: 12 },
-      { text: 'C. No revision cap stated at all / Unlimited revisions assumed', score: 25 }
+      { text: 'B. Vague "reasonable revisions" clause mentioned verbally or informally', score: 6 },
+      { text: 'C. No revision cap stated at all / Client assumes unlimited redesigns & iterations', score: 12 }
     ]
   },
   {
     id: 'q4',
-    title: '4. What are the client timeline expectations vs reality?',
+    title: '4. Timeline Realism: What are the client timeline expectations vs reality?',
     options: [
       { text: 'A. Generous buffer with realistic, flexible delivery milestones', score: 0 },
-      { text: 'B. Tight deadline, but client provides assets and feedback on time', score: 8 },
-      { text: 'C. "We need this yesterday" / Hard immovable launch date with lagging client inputs', score: 25 }
+      { text: 'B. Tight deadline, but client provides assets and feedback promptly', score: 6 },
+      { text: 'C. "We need this yesterday" / Hard immovable launch date with lagging client inputs', score: 13 }
+    ]
+  },
+  {
+    id: 'q5',
+    title: '5. Technical Dependencies: Are there external APIs, legacy databases, or 3rd party blockers?',
+    options: [
+      { text: 'A. Zero external dependencies; modern, self-contained architecture', score: 0 },
+      { text: 'B. Standard well-documented 3rd party APIs with test sandbox credentials provided', score: 6 },
+      { text: 'C. Undocumented legacy systems, pending 3rd party vendor approvals, or untested APIs', score: 13 }
+    ]
+  },
+  {
+    id: 'q6',
+    title: '6. Client Tech Maturity: How experienced is the client with digital workflows?',
+    options: [
+      { text: 'A. Highly tech-savvy; understands development lifecycle, staging servers, and git', score: 0 },
+      { text: 'B. Moderate; understands basic web concepts but requires occasional guidance', score: 6 },
+      { text: 'C. Non-technical; expects instant real-time changes directly on production with zero QA', score: 12 }
+    ]
+  },
+  {
+    id: 'q7',
+    title: '7. Payment & Deposit Terms: What is the financial payment milestone structure?',
+    options: [
+      { text: 'A. 50% upfront deposit + milestone disbursements linked to written sign-offs', score: 0 },
+      { text: 'B. 25-33% deposit with Net-15 balance on final delivery', score: 6 },
+      { text: 'C. 0% upfront / "Pay on complete satisfaction" / Net-60 delayed terms', score: 13 }
+    ]
+  },
+  {
+    id: 'q8',
+    title: '8. Communication SLA: How is feedback submitted and tracked?',
+    options: [
+      { text: 'A. Centralized issue tracker (Linear/Jira/Asana) with structured 48-hr SLA', score: 0 },
+      { text: 'B. Email threads with occasional ad-hoc requests', score: 6 },
+      { text: 'C. Fragmented WhatsApp, SMS, Slack DMs, and weekend phone calls at all hours', score: 13 }
     ]
   }
 ];
@@ -476,37 +512,39 @@ function calculateRiskScore() {
     const clausesList = document.getElementById('quiz-clauses-list');
     clausesList.innerHTML = '';
 
-    if (totalScore <= 20) {
+    if (totalScore <= 25) {
       badge.style.borderColor = 'var(--success)';
       badge.style.background = 'var(--success-bg)';
       scoreVal.style.color = 'var(--success)';
       title.textContent = '🟢 LOW RISK PROJECT (Safe to Proceed)';
-      desc.textContent = 'This client exhibits healthy scoping maturity. Standard contract clauses will protect you adequately.';
+      desc.textContent = 'This client exhibits healthy scoping maturity. Standard contract clauses and a standard 2-round revision cap will protect you adequately.';
       clausesList.innerHTML = `
-        <li>✓ Standard 2-round revision cap.</li>
-        <li>✓ Written 3-day turnaround clause for client asset submission.</li>
+        <li>✓ <strong>Standard 2-Round Revision Cap:</strong> Revisions consolidated in writing within 5 business days.</li>
+        <li>✓ <strong>Client Dependency SLA:</strong> Client agrees to deliver brand assets and copy within 3 business days of request.</li>
       `;
-    } else if (totalScore <= 55) {
+    } else if (totalScore <= 60) {
       badge.style.borderColor = 'var(--warning)';
       badge.style.background = 'var(--warning-bg)';
       scoreVal.style.color = 'var(--warning)';
       title.textContent = '🟡 MODERATE RISK (Guardrails Mandatory)';
-      desc.textContent = 'Significant scope leakage expected during mid-build review. You must introduce strict change order thresholds.';
+      desc.textContent = 'Significant scope leakage expected during mid-build review. You must introduce strict change order thresholds, consolidated feedback, and single-point-of-contact governance.';
       clausesList.innerHTML = `
-        <li>⚠️ <strong>Single Point of Contact Clause:</strong> Require client to designate one sole rep for approvals.</li>
-        <li>⚠️ <strong>Revision Consolidation Rule:</strong> All feedback must be submitted in a single structured spreadsheet/doc.</li>
-        <li>⚠️ <strong>Hourly Overrun Gate:</strong> Any requests beyond written SOW billed at $XX/hr with 50% upfront deposit.</li>
+        <li>⚠️ <strong>Single Point of Contact Clause:</strong> Client designates 1 primary representative with sole authority to issue approvals and change requests.</li>
+        <li>⚠️ <strong>Consolidated Feedback Protocol:</strong> All revision requests must be collated into a single master document before work commences.</li>
+        <li>⚠️ <strong>Hourly Overrun Gate:</strong> Any requested feature not explicitly enumerated in the Statement of Work is billed at your standard rate with 50% upfront deposit.</li>
+        <li>⚠️ <strong>Third-Party Blocker Clause:</strong> Delays resulting from 3rd party API credentials automatically extend milestone delivery dates 1:1.</li>
       `;
     } else {
       badge.style.borderColor = 'var(--danger)';
       badge.style.background = 'var(--danger-bg)';
       scoreVal.style.color = 'var(--danger)';
       title.textContent = '🔴 CRITICAL RISK (High Financial Danger)';
-      desc.textContent = 'WARNING: Highly chaotic project profile. Without aggressive upfront protection, you will lose 30-50% of your profit margin to unbilled rework.';
+      desc.textContent = 'WARNING: Highly chaotic project profile. Without aggressive upfront protection, you risk losing 30-50% of your profit margin to unbilled rework and endless unpaid cycles.';
       clausesList.innerHTML = `
-        <li>🚨 <strong>Paid Discovery Sprint First:</strong> Do NOT quote fixed price. Bill a $1,500 initial discovery sprint to write exact specs.</li>
-        <li>🚨 <strong>Milestone Sign-Off Freeze:</strong> Once a milestone is approved, any backward revisions trigger an automatic Change Order.</li>
-        <li>🚨 <strong>Client Delay Extension Clause:</strong> Every day the client delays feedback pushes launch deadline back by 2 days.</li>
+        <li>🚨 <strong>Mandatory Paid Discovery Sprint:</strong> Do NOT quote fixed price upfront. Bill a non-refundable $1,500-$3,000 discovery sprint to draft complete technical specifications.</li>
+        <li>🚨 <strong>Milestone Sign-Off Freeze:</strong> Once a design or code milestone receives written sign-off, any retroactive revisions automatically trigger a formal Change Order Amendment.</li>
+        <li>🚨 <strong>Client Delay Compensation Rule:</strong> Client review delays exceeding 5 business days pause all work and incur a 10% project restart re-allocation fee.</li>
+        <li>🚨 <strong>Out-of-Hours Communication Gate:</strong> All project communication must take place via official email or project management portal; weekend emergencies billed at 2x rate.</li>
       `;
     }
 
@@ -540,7 +578,127 @@ function copyScript(elementId) {
 }
 
 // ==========================================
-// 8. PRO MODAL & MONETIZATION SIMULATION
+// 8. VIRAL SHARING & DRAFT IMPORT/EXPORT
+// ==========================================
+function shareCalculation(platform) {
+  const lossText = document.getElementById('res-project-loss').textContent || '$1,800.00';
+  const annualLeak = document.getElementById('res-annual-leak').textContent || '$14,400.00';
+  const shareUrl = window.location.origin && window.location.origin !== 'null' ? window.location.origin : 'https://scopeguard.app';
+
+  const tweet = `I just calculated my freelance scope creep financial leak using ScopeGuard:\n💸 Project Loss: ${lossText}\n📉 Annual Leak: ${annualLeak}\n\nStop working for free. Calculate yours: ${shareUrl}`;
+
+  if (platform === 'twitter') {
+    const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweet)}`;
+    window.open(url, '_blank', 'noopener,noreferrer');
+    logEvent('shared_calculation', { platform: 'twitter' });
+  } else if (platform === 'linkedin') {
+    const url = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`;
+    window.open(url, '_blank', 'noopener,noreferrer');
+    logEvent('shared_calculation', { platform: 'linkedin' });
+  } else if (platform === 'copy') {
+    navigator.clipboard.writeText(tweet).then(() => {
+      showToast('🔗 Calculation summary copied to clipboard!');
+      logEvent('shared_calculation', { platform: 'copy' });
+    });
+  }
+}
+
+function saveDraftJSON() {
+  const draftData = {
+    version: '1.0',
+    savedAt: new Date().toISOString(),
+    formData: {
+      clientName: document.getElementById('co-client-name').value,
+      clientCompany: document.getElementById('co-client-company').value,
+      yourName: document.getElementById('co-your-name').value,
+      yourCompany: document.getElementById('co-your-company').value,
+      projectTitle: document.getElementById('co-project-title').value,
+      originalSowDate: document.getElementById('co-original-sow-date').value,
+      amendmentNumber: document.getElementById('co-amendment-num').value,
+      issueDate: document.getElementById('co-issue-date').value,
+      requestSummary: document.getElementById('co-request-summary').value,
+      costImpact: document.getElementById('co-cost-impact').value,
+      timeImpact: document.getElementById('co-time-impact').value,
+      depositReq: document.getElementById('co-deposit-req').value,
+      specialNotes: document.getElementById('co-special-notes').value,
+      items: collectChangeOrderItems()
+    }
+  };
+
+  const blob = new Blob([JSON.stringify(draftData, null, 2)], { type: 'application/json' });
+  const link = document.createElement('a');
+  const filename = `ScopeGuard_CO_${document.getElementById('co-amendment-num').value || 'Draft'}_${new Date().toISOString().slice(0, 10)}.json`;
+  link.href = URL.createObjectURL(blob);
+  link.download = filename;
+  link.click();
+  URL.revokeObjectURL(link.href);
+
+  showToast('💾 Change order draft exported as JSON!');
+  logEvent('draft_json_saved');
+}
+
+function triggerLoadDraftJSON() {
+  document.getElementById('draft-file-input').click();
+}
+
+function handleDraftFileSelect(event) {
+  const file = event.target.files && event.target.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    try {
+      const draft = JSON.parse(e.target.result);
+      if (!draft.formData) {
+        throw new Error('Invalid ScopeGuard draft format.');
+      }
+      const data = draft.formData;
+      document.getElementById('co-client-name').value = data.clientName || '';
+      document.getElementById('co-client-company').value = data.clientCompany || '';
+      document.getElementById('co-your-name').value = data.yourName || '';
+      document.getElementById('co-your-company').value = data.yourCompany || '';
+      document.getElementById('co-project-title').value = data.projectTitle || '';
+      document.getElementById('co-original-sow-date').value = data.originalSowDate || '';
+      document.getElementById('co-amendment-num').value = data.amendmentNumber || '01';
+      document.getElementById('co-issue-date').value = data.issueDate || '';
+      document.getElementById('co-request-summary').value = data.requestSummary || '';
+      document.getElementById('co-cost-impact').value = data.costImpact || '850';
+      document.getElementById('co-time-impact').value = data.timeImpact || '5';
+      document.getElementById('co-deposit-req').value = data.depositReq || '50';
+      document.getElementById('co-special-notes').value = data.specialNotes || '';
+
+      // Populate items
+      const itemsContainer = document.getElementById('co-items-container');
+      itemsContainer.innerHTML = '';
+      if (Array.isArray(data.items) && data.items.length > 0) {
+        data.items.forEach(item => {
+          const row = document.createElement('div');
+          row.className = 'co-item-row';
+          row.innerHTML = `
+            <input type="text" class="form-input co-item-desc" value="${escapeHtml(item.desc || '')}" placeholder="Description of out-of-scope work..." oninput="updateChangeOrderPreview()">
+            <input type="number" class="form-input co-item-hours" value="${item.hours || 0}" placeholder="Hrs" oninput="updateChangeOrderPreview()">
+            <input type="number" class="form-input co-item-rate" value="${item.rate || 0}" placeholder="Rate" oninput="updateChangeOrderPreview()">
+            <button type="button" class="btn-remove-item" onclick="removeChangeOrderItem(this)">✕</button>
+          `;
+          itemsContainer.appendChild(row);
+        });
+      } else {
+        addChangeOrderItem();
+      }
+
+      updateChangeOrderPreview();
+      showToast('📂 Change order draft loaded successfully!');
+      logEvent('draft_json_loaded');
+    } catch (err) {
+      showToast('❌ Failed to parse JSON draft: ' + err.message);
+    }
+  };
+  reader.readAsText(file);
+  event.target.value = '';
+}
+
+// ==========================================
+// 9. PRO MODAL & MONETIZATION
 // ==========================================
 function openProModal() {
   document.getElementById('pro-modal').classList.add('active');
@@ -571,15 +729,14 @@ function applyCoupon() {
 
 function simulateCheckout(tier) {
   logEvent('checkout_initiated', { tier });
-  showToast(`🚀 Redirecting to secure Stripe checkout for ${tier}...`);
-  // In production, this redirects to real Stripe payment link
+  showToast(`🚀 Initializing secure Stripe checkout for ${tier}...`);
   setTimeout(() => {
     alert(`[Stripe Checkout Hook]\n\nProduct: ScopeGuard ${tier}\nStatus: Ready for Live API Key.\n\nTo complete this transaction, connect your Stripe Payment Link in settings.`);
   }, 400);
 }
 
 // ==========================================
-// 9. LEAD MAGNET CAPTURE
+// 10. LEAD MAGNET & SCOPE DEFENSE VAULT
 // ==========================================
 function handleLeadCapture(e) {
   e.preventDefault();
@@ -590,9 +747,69 @@ function handleLeadCapture(e) {
     AppState.leads.push({ email, date: new Date().toISOString() });
     localStorage.setItem('sg_leads', JSON.stringify(AppState.leads));
     emailInput.value = '';
-    showToast('🎉 Access Granted! Check your inbox for the Scope Defense Vault.');
+    showToast('🎉 Access Granted! Unlocking your Scope Defense Vault...');
     logEvent('lead_captured', { email });
+    setTimeout(() => {
+      openVaultModal();
+    }, 600);
   }
+}
+
+function openVaultModal() {
+  const modal = document.getElementById('vault-modal');
+  if (modal) modal.classList.add('active');
+  logEvent('vault_modal_opened');
+}
+
+function closeVaultModal() {
+  const modal = document.getElementById('vault-modal');
+  if (modal) modal.classList.remove('active');
+}
+
+function copyTextToClipboard(elementId) {
+  const text = document.getElementById(elementId).innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    showToast('📋 Master legal clause copied to clipboard!');
+    logEvent('vault_clause_copied', { id: elementId });
+  });
+}
+
+function downloadVaultPack() {
+  const clauses = `SCOPEGUARD AGENCY SCOPE DEFENSE VAULT
+==================================================
+CONFIDENTIAL FREELANCE & AGENCY MASTER LEGAL CLAUSES
+Generated by ScopeGuard (https://scopeguard.app)
+
+[CLAUSE 1: THE SINGLE-POINT-OF-CONTACT CLAUSE]
+--------------------------------------------------
+"Client designates one (1) primary project representative ('Authorized Representative') who possesses exclusive authority to request modifications, approve deliverables, and issue written sign-offs on behalf of Client. Contractor shall not be obligated to implement feedback, instructions, or critique provided by any other stakeholder or executive unless formally transmitted through the Authorized Representative."
+
+[CLAUSE 2: THE CONSOLIDATED REVISION ROUND CLAUSE]
+--------------------------------------------------
+"Each milestone includes up to two (2) consolidated rounds of revisions. A 'round of revisions' is defined as a single, comprehensive, non-contradictory written list of specific modifications submitted simultaneously by Client within five (5) business days of deliverable submission. Piecemeal feedback, Slack/WhatsApp requests, or disjointed comments from multiple team members shall not constitute an actionable revision round."
+
+[CLAUSE 3: THE RETROACTIVE REVISION CHANGE ORDER CLAUSE]
+--------------------------------------------------
+"Written approval or milestone payment acceptance of any design mockup, architectural blueprint, wireframe, or code sprint constitutes full and final acceptance of that milestone. Any subsequent request to modify approved deliverables shall be deemed Out-of-Scope and shall require the execution of a formal Change Order Amendment with separate compensation and timeline adjustments."
+
+[CLAUSE 4: THE CLIENT DELAY TIMELINE EXTENSION CLAUSE]
+--------------------------------------------------
+"Project milestones and final delivery dates are strictly contingent upon timely Client cooperation. If Client fails to provide necessary assets, API credentials, copy, or milestone feedback within three (3) business days of Contractor's written request, all future milestone deadlines shall automatically be extended on a two-for-one (2:1) calendar day basis."
+
+[CLAUSE 5: THE OUT-OF-SCOPE HOURLY RATE GATE]
+--------------------------------------------------
+"Any work, service, or consultation requested by Client that falls outside the explicit Statement of Work (SOW) shall be billed at Contractor's standard supplemental hourly rate of $XXX.00/hr in minimum 1-hour increments, requiring a 50% upfront deposit prior to execution."
+`;
+
+  const blob = new Blob([clauses], { type: 'text/plain;charset=utf-8' });
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = 'ScopeGuard_Master_Scope_Defense_Clauses.txt';
+  link.click();
+  URL.revokeObjectURL(link.href);
+
+  showToast('📥 Master Scope Defense Vault downloaded!');
+  logEvent('vault_pack_downloaded');
 }
 
 function trackAffiliateClick(toolName) {
@@ -600,7 +817,80 @@ function trackAffiliateClick(toolName) {
 }
 
 // ==========================================
-// 10. TOAST NOTIFICATION UTILITY
+// 11. EXECUTIVE TELEMETRY & OPERATIONS CONSOLE
+// ==========================================
+function openTelemetryModal() {
+  renderTelemetryData();
+  const modal = document.getElementById('telemetry-modal');
+  if (modal) modal.classList.add('active');
+  logEvent('telemetry_modal_opened');
+}
+
+function closeTelemetryModal() {
+  const modal = document.getElementById('telemetry-modal');
+  if (modal) modal.classList.remove('active');
+}
+
+function renderTelemetryData() {
+  const leadsCount = AppState.leads ? AppState.leads.length : 0;
+  const eventsCount = AppState.events ? AppState.events.length : 0;
+
+  const mLeads = document.getElementById('m-leads-count');
+  const mEvents = document.getElementById('m-events-count');
+  const mPro = document.getElementById('m-pro-status');
+  const mDaily = document.getElementById('m-daily-runrate');
+
+  if (mLeads) mLeads.textContent = leadsCount;
+  if (mEvents) mEvents.textContent = eventsCount;
+  if (mPro) mPro.textContent = AppState.isPro ? 'PRO (Active)' : 'FREE TIER';
+  if (mDaily) mDaily.textContent = AppState.isPro ? '$29.00' : '$0.00';
+
+  const logBody = document.getElementById('telemetry-event-logs');
+  if (logBody) {
+    if (!AppState.events || AppState.events.length === 0) {
+      logBody.innerHTML = '<tr><td colspan="3" style="text-align:center; color:var(--text-muted); padding:16px;">No telemetry events recorded in this session yet.</td></tr>';
+    } else {
+      const recent = AppState.events.slice(-12).reverse();
+      logBody.innerHTML = recent.map(ev => `
+        <tr>
+          <td style="color:var(--text-muted); font-size:11px;">${new Date(ev.timestamp).toLocaleTimeString()}</td>
+          <td><span class="badge" style="background:rgba(99,102,241,0.15); color:var(--primary); font-size:11px; padding:2px 6px;">${escapeHtml(ev.name)}</span></td>
+          <td style="color:var(--text-secondary); font-size:12px;">${escapeHtml(JSON.stringify(ev.payload || {}))}</td>
+        </tr>
+      `).join('');
+    }
+  }
+}
+
+function exportLeadsCSV() {
+  if (!AppState.leads || AppState.leads.length === 0) {
+    showToast('⚠️ No subscriber leads collected yet.');
+    return;
+  }
+
+  const csvRows = [
+    ['Email', 'Captured_Timestamp', 'Status']
+  ];
+
+  AppState.leads.forEach(l => {
+    csvRows.push([`"${l.email}"`, `"${l.date}"`, '"Subscribed - Scope Vault"']);
+  });
+
+  const csvContent = 'data:text/csv;charset=utf-8,' + csvRows.map(e => e.join(',')).join('\n');
+  const encodedUri = encodeURI(csvContent);
+  const link = document.createElement('a');
+  link.setAttribute('href', encodedUri);
+  link.setAttribute('download', `ScopeGuard_Leads_${new Date().toISOString().slice(0, 10)}.csv`);
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+
+  showToast('📥 Leads exported to CSV!');
+  logEvent('leads_csv_exported');
+}
+
+// ==========================================
+// 12. TOAST NOTIFICATION UTILITY
 // ==========================================
 function showToast(message) {
   const container = document.getElementById('toast-container');
@@ -617,4 +907,5 @@ function showToast(message) {
     toast.style.transition = 'all 0.3s ease';
     setTimeout(() => toast.remove(), 300);
   }, 3200);
+}
 }

@@ -14,21 +14,53 @@
   <meta property="og:description" content="Calculate your unbilled financial loss and generate legally sound Change Orders instantly. Built for freelancers and agencies.">
   <meta property="og:url" content="https://scopeguard.app">
 
-  <!-- Schema.org WebApplication structured data -->
+  <!-- Schema.org Structured Data (WebApplication & FAQPage) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "ScopeGuard",
-    "applicationCategory": "BusinessApplication",
-    "operatingSystem": "All",
-    "offers": {
-      "@type": "Offer",
-      "price": "0.00",
-      "priceCurrency": "USD"
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "ScopeGuard",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0.00",
+        "priceCurrency": "USD"
+      },
+      "description": "Scope creep loss calculator, project risk diagnostic, and automated freelance change order generator."
     },
-    "description": "Scope creep loss calculator and automated freelance change order generator."
-  }
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is scope creep in freelance and agency projects?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Scope creep refers to unapproved, gradual expansions in project requirements, deliverables, or revision rounds beyond the original agreed Statement of Work (SOW) without a corresponding increase in budget or timeline."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does scope creep cost the average freelancer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Industry data shows the average full-time freelancer loses $4,850 to $14,400 annually in unbilled hours absorbed as 'quick favors' and unpaid revision overruns."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a Change Order and why is it legally essential?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A Change Order is a formal written amendment to an existing contract specifying new deliverables, associated fees, timeline extensions, and payment terms, protecting both provider and client."
+          }
+        }
+      ]
+    }
+  ]
   </script>
 
   <link rel="stylesheet" href="styles.css">
@@ -212,6 +244,18 @@
             <button class="btn btn-primary btn-block" onclick="transferToChangeOrder()">
               🚀 Auto-Generate Change Order For This Work
             </button>
+            <div class="viral-share-row mt-3">
+              <span class="share-label">📢 Share Your Calculation:</span>
+              <button class="btn btn-share btn-sm" onclick="shareCalculation('twitter')" title="Share on X / Twitter">
+                𝕏 Share
+              </button>
+              <button class="btn btn-share btn-sm" onclick="shareCalculation('linkedin')" title="Share on LinkedIn">
+                in LinkedIn
+              </button>
+              <button class="btn btn-share btn-sm" onclick="shareCalculation('copy')" title="Copy Loss Summary">
+                📋 Copy Text
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -225,8 +269,11 @@
           <p class="text-muted">Formalize out-of-scope requests in 60 seconds with clear pricing, revision caps, and timeline adjustments.</p>
         </div>
         <div class="btn-group">
-          <button class="btn btn-secondary btn-sm" onclick="loadSampleChangeOrder()">Load Sample Data</button>
-          <button class="btn btn-secondary btn-sm" onclick="clearChangeOrderForm()">Clear Form</button>
+          <button class="btn btn-secondary btn-sm" onclick="saveDraftJSON()" title="Export JSON Draft">💾 Save Draft</button>
+          <button class="btn btn-secondary btn-sm" onclick="triggerLoadDraftJSON()" title="Load JSON Draft">📂 Load Draft</button>
+          <input type="file" id="draft-file-input" accept=".json" style="display:none" onchange="handleDraftFileSelect(event)">
+          <button class="btn btn-secondary btn-sm" onclick="loadSampleChangeOrder()">Sample Data</button>
+          <button class="btn btn-secondary btn-sm" onclick="clearChangeOrderForm()">Clear</button>
         </div>
       </div>
 
@@ -583,6 +630,54 @@ Best regards,
           </div>
           <button class="btn btn-secondary btn-sm btn-block" onclick="copyScript('script-text-4')">📋 Copy Script to Clipboard</button>
         </div>
+
+        <!-- Script 5 -->
+        <div class="card script-card">
+          <div class="script-header">
+            <span class="script-tag tag-warning">Scenario 5</span>
+            <h3>"Client requests an urgent rush turnaround"</h3>
+          </div>
+          <p class="script-context">Use when a client demands weekend work or pulls an agreed 2-week deadline into 48 hours.</p>
+          <div class="script-body" id="script-text-5">
+Hi [Client Name],
+
+I understand this deliverable has become time-critical on your end.
+
+To pull this completion date forward from [Original Date] to [Requested Rush Date], our team will need to reallocate dedicated sprint capacity and work overtime hours over the next [X days / weekend].
+
+We can accommodate this expedited schedule under our standard 30% Rush Acceleration Fee of [$XXX], bringing the milestone total to [$XXX].
+
+If you would like us to prioritize this immediately, please reply with approval and I will lock in the team's schedule today!
+
+Best regards,
+[Your Name]
+          </div>
+          <button class="btn btn-secondary btn-sm btn-block" onclick="copyScript('script-text-5')">📋 Copy Script to Clipboard</button>
+        </div>
+
+        <!-- Script 6 -->
+        <div class="card script-card">
+          <div class="script-header">
+            <span class="script-tag tag-danger">Scenario 6</span>
+            <h3>"Client was unresponsive for weeks, now wants instant restart"</h3>
+          </div>
+          <p class="script-context">Use when a stalled project suddenly wakes up after months of client silence and expects immediate delivery.</p>
+          <div class="script-body" id="script-text-6">
+Hi [Client Name],
+
+Great to hear from you! Glad to see things are moving forward again.
+
+Because the project was placed on hold since [Date] (surpassing our standard 30-day inactivity threshold), our team had to reassign production resources to active client queues.
+
+To remobilize development and re-audit the code and environment status, we will apply our standard Project Reactivation Surcharge of [$XXX]. We can schedule your project into our upcoming production slot starting on [New Start Date] with an updated delivery date of [New Launch Date].
+
+Please review and confirm if this timeline works for your team so we can formalize the sprint schedule!
+
+Best regards,
+[Your Name]
+          </div>
+          <button class="btn btn-secondary btn-sm btn-block" onclick="copyScript('script-text-6')">📋 Copy Script to Clipboard</button>
+        </div>
       </div>
     </section>
 
@@ -652,10 +747,125 @@ Best regards,
           </form>
           <small class="text-muted">Zero spam. Unsubscribe anytime with 1 click.</small>
         </div>
-      </div>
+      <!-- SEO Knowledge Base / FAQ Section -->
+      <section class="faq-section mt-5">
+        <div class="panel-header">
+          <div>
+            <h2>Frequently Asked Questions About Scope Creep & Change Orders</h2>
+            <p class="text-muted">Master the business side of freelancing and agency project management.</p>
+          </div>
+        </div>
+
+        <div class="faq-grid">
+          <div class="card faq-card">
+            <h3 class="faq-question">❓ What is scope creep and why does it destroy agency margins?</h3>
+            <p class="faq-answer">Scope creep happens when clients request additional revisions, small feature tweaks, or expanded deliverables without paying for the extra time. Over a typical 6-week project, just 4 unbilled hours per week leads to 24 unbilled hours—eroding 20% to 35% of your expected profit margin.</p>
+          </div>
+
+          <div class="card faq-card">
+            <h3 class="faq-question">❓ What makes a Change Order legally binding?</h3>
+            <p class="faq-answer">A Change Order is an amendment to your primary Master Services Agreement (MSA) or Statement of Work (SOW). To be legally binding, it must clearly describe the specific new deliverables, list the exact compensation (fixed fee or hourly), define the timeline impact, and be countersigned (or confirmed in writing) by an authorized client representative.</p>
+          </div>
+
+          <div class="card faq-card">
+            <h3 class="faq-question">❓ How do I tell a client their request is out of scope without offending them?</h3>
+            <p class="faq-answer">Always validate their idea first, then give them two constructive choices: <em>"That's a great feature. We can either queue it for Phase 2 right after launch so we don't delay your release date, or execute a fast Change Order to add it to the current milestone for $XXX and +3 days."</em> This positions you as a professional protecting their launch date rather than being difficult.</p>
+          </div>
+
+          <div class="card faq-card">
+            <h3 class="faq-question">❓ Does ScopeGuard store or upload my client data?</h3>
+            <p class="faq-answer">No. ScopeGuard is 100% client-side. All calculations, client names, project specs, and generated documents run exclusively in your browser's local memory. Nothing is ever sent to external cloud servers, guaranteeing complete client confidentiality.</p>
+          </div>
+        </div>
+      </section>
+
     </section>
 
   </main>
+
+  <!-- Lead Magnet / Scope Defense Vault Modal -->
+  <div class="modal-overlay" id="vault-modal">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeVaultModal()">✕</button>
+      <div class="modal-badge" style="color:var(--success);">ACCESS GRANTED</div>
+      <h2 class="modal-title">🛡️ Agency Scope Creep Defense Vault</h2>
+      <p class="modal-sub">Lawyer-vetted contract clauses and master negotiation scripts ready for immediate copy-paste.</p>
+
+      <div class="vault-clauses-box">
+        <div class="vault-clause-item">
+          <div class="vault-clause-header">
+            <strong>1. Master Scope Boundary & Revision Gate Clause</strong>
+            <button class="btn btn-secondary btn-xs" onclick="copyTextToClipboard('clause-1-text')">Copy Clause</button>
+          </div>
+          <pre class="vault-pre" id="clause-1-text">"Any deliverables, revisions, or feature modifications requested by the Client that are not explicitly enumerated in Exhibit A (Statement of Work) shall be deemed Out-of-Scope Work. Service Provider reserves the right to decline Out-of-Scope Work or quote such work under a separate written Change Order prior to commencement."</pre>
+        </div>
+
+        <div class="vault-clause-item">
+          <div class="vault-clause-header">
+            <strong>2. Client Delay & Launch Extension Clause</strong>
+            <button class="btn btn-secondary btn-xs" onclick="copyTextToClipboard('clause-2-text')">Copy Clause</button>
+          </div>
+          <pre class="vault-pre" id="clause-2-text">"Timely completion of Project Milestones is contingent upon Client providing required assets, credentials, and written feedback within three (3) business days of request. Each day of Client delay beyond this window shall automatically extend the final delivery deadline by two (2) business days to accommodate production rescheduling."</pre>
+        </div>
+
+        <div class="vault-clause-item">
+          <div class="vault-clause-header">
+            <strong>3. Formal Milestone Sign-Off Freeze Clause</strong>
+            <button class="btn btn-secondary btn-xs" onclick="copyTextToClipboard('clause-3-text')">Copy Clause</button>
+          </div>
+          <pre class="vault-pre" id="clause-3-text">"Written approval of any milestone deliverable by the designated Client Representative constitutes final acceptance of that phase. Any subsequent structural or design modifications affecting an approved milestone will require a formal Change Order and additional engineering compensation."</pre>
+        </div>
+      </div>
+
+      <div class="mt-4 text-center">
+        <button class="btn btn-primary" onclick="downloadVaultPack()">
+          📥 Download Complete Markdown Vault Pack (.md)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Operations & Telemetry Modal (CEO / Admin Tool) -->
+  <div class="modal-overlay" id="telemetry-modal">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeTelemetryModal()">✕</button>
+      <div class="modal-badge">AUTONOMOUS BUSINESS CONSOLE</div>
+      <h2 class="modal-title">📊 Executive Business Telemetry & Metrics</h2>
+      <p class="modal-sub">Live telemetry, conversion funnel health, and local lead database.</p>
+
+      <div class="telemetry-grid">
+        <div class="card stat-mini">
+          <div class="stat-mini-label">Total Tracked Events</div>
+          <div class="stat-mini-num text-primary" id="tel-total-events">0</div>
+        </div>
+        <div class="card stat-mini">
+          <div class="stat-mini-label">Captured Leads</div>
+          <div class="stat-mini-num text-success" id="tel-total-leads">0</div>
+        </div>
+        <div class="card stat-mini">
+          <div class="stat-mini-label">Pro Status</div>
+          <div class="stat-mini-num text-warning" id="tel-pro-status">Free</div>
+        </div>
+      </div>
+
+      <div class="leads-table-container mt-4">
+        <div class="leads-header-row">
+          <h4>Captured Email Leads (<span id="tel-lead-count">0</span>)</h4>
+          <button class="btn btn-secondary btn-xs" onclick="exportLeadsCSV()">📥 Export CSV</button>
+        </div>
+        <div class="leads-list-box" id="tel-leads-list">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+
+      <div class="events-log-container mt-4">
+        <h4>Recent Application Events (Last 15)</h4>
+        <div class="events-stream" id="tel-events-stream">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Pro Upgrade Modal -->
   <div class="modal-overlay" id="pro-modal">
@@ -719,9 +929,9 @@ Best regards,
       </div>
 
       <div class="footer-meta">
-        <div class="ops-badge">
+        <div class="ops-badge" style="cursor:pointer;" onclick="openTelemetryModal()" title="Open Executive Business Console">
           <span class="ops-dot"></span>
-          <span>Autonomous AI Business Factory • Zero-Cost Public Utility</span>
+          <span>Autonomous AI Business Factory • Zero-Cost Public Utility (📊 View Telemetry)</span>
         </div>
         <div class="footer-copyright">
           © 2026 ScopeGuard. All calculations and documents generated strictly on client device for 100% data privacy.
