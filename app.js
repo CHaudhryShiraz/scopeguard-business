@@ -715,10 +715,16 @@ function applyCoupon() {
 }
 
 function simulateCheckout(tier) {
-  logEvent('checkout_initiated', { tier });
-  showToast(`🚀 Initializing secure Stripe checkout for ${tier}...`);
+  logEvent('waitlist_interest', { tier });
+  closeProModal();
+  showToast('🚀 Pro tier is launching soon! Join the VIP waitlist below for 50% off.');
+  const leadSection = document.getElementById('vault');
+  if (leadSection) {
+    leadSection.scrollIntoView({ behavior: 'smooth' });
+  }
   setTimeout(() => {
-    alert(`[Stripe Checkout Hook]\n\nProduct: ScopeGuard ${tier}\nStatus: Ready for Live API Key.\n\nTo complete this transaction, connect your Stripe Payment Link in settings.`);
+    const emailInput = document.getElementById('lead-email');
+    if (emailInput) emailInput.focus();
   }, 400);
 }
 
