@@ -685,47 +685,22 @@ function handleDraftFileSelect(event) {
 }
 
 // ==========================================
-// 9. PRO MODAL & MONETIZATION
+// 9. PRO MODAL & FUTURE PAYMENT ARCHITECTURE (v1.1)
 // ==========================================
+// Note: In v1.0 Beta, ScopeGuard operates strictly as a zero-cost, privacy-preserving
+// client-side static SPA. Server-side payment gateways (JazzCash, Easypaisa, SadaPay,
+// Stripe, and PostgreSQL/Supabase database verification) will be integrated in v1.1.
+// No simulated checkouts or mock transactions are executed in this release.
+
 function openProModal() {
-  document.getElementById('pro-modal').classList.add('active');
+  const modal = document.getElementById('pro-modal');
+  if (modal) modal.classList.add('active');
   logEvent('pro_modal_opened');
 }
 
 function closeProModal() {
-  document.getElementById('pro-modal').classList.remove('active');
-}
-
-function applyCoupon() {
-  const code = document.getElementById('coupon-code').value.trim().toUpperCase();
-  const feedback = document.getElementById('coupon-feedback');
-
-  if (code === 'AUTONOMOUS100') {
-    AppState.isPro = true;
-    localStorage.setItem('sg_is_pro', 'true');
-    feedback.innerHTML = '<span class="text-success" style="font-size:13px; font-weight:700;">🎉 100% OFF VIP Pass Activated! Pro Features Unlocked.</span>';
-    showToast('✨ Welcome to ScopeGuard Pro Lifetime!');
-    setTimeout(() => {
-      closeProModal();
-    }, 1500);
-    logEvent('coupon_redeemed', { code });
-  } else {
-    feedback.innerHTML = '<span class="text-danger" style="font-size:13px;">Invalid coupon code. Try: AUTONOMOUS100</span>';
-  }
-}
-
-function simulateCheckout(tier) {
-  logEvent('waitlist_interest', { tier });
-  closeProModal();
-  showToast('🚀 Pro tier is launching soon! Join the VIP waitlist below for 50% off.');
-  const leadSection = document.getElementById('vault');
-  if (leadSection) {
-    leadSection.scrollIntoView({ behavior: 'smooth' });
-  }
-  setTimeout(() => {
-    const emailInput = document.getElementById('lead-email');
-    if (emailInput) emailInput.focus();
-  }, 400);
+  const modal = document.getElementById('pro-modal');
+  if (modal) modal.classList.remove('active');
 }
 
 // ==========================================
@@ -838,7 +813,49 @@ function closeTelemetryModal() {
 function renderTelemetryData() {
   const leadsCount = AppState.leads ? AppState.leads.length : 0;
   const eventsCount = AppState.events ? AppState.events.length : 0;
+  const proLabel = AppState.isPro ? 'PRO PREVIEW (Beta)' : 'FREE PREVIEW';
 
+  // Primary Telemetry Modal IDs
+  const telEvents = document.getElementById('tel-total-events');
+  const telLeads = document.getElementById('tel-total-leads');
+  const telPro = document.getElementById('tel-pro-status');
+  const telLeadCount = document.getElementById('tel-lead-count');
+  const telLeadsList = document.getElementById('tel-leads-list');
+  const telEventsStream = document.getElementById('tel-events-stream');
+
+  if (telEvents) telEvents.textContent = eventsCount;
+  if (telLeads) telLeads.textContent = leadsCount;
+  if (telPro) telPro.textContent = proLabel;
+  if (telLeadCount) telLeadCount.textContent = leadsCount;
+
+  if (telLeadsList) {
+    if (!AppState.leads || AppState.leads.length === 0) {
+      telLeadsList.innerHTML = '<p class="text-muted" style="padding:12px; font-size:13px; text-align:center;">No leads collected in local storage yet.</p>';
+    } else {
+      telLeadsList.innerHTML = AppState.leads.map((l, i) => `
+        <div style="display:flex; justify-content:space-between; padding:8px 12px; border-bottom:1px solid var(--border-color); font-size:13px;">
+          <span><strong>#${i + 1}</strong> ${escapeHtml(l.email)}</span>
+          <span class="text-muted" style="font-size:11px;">${new Date(l.date).toLocaleDateString()}</span>
+        </div>
+      `).join('');
+    }
+  }
+
+  if (telEventsStream) {
+    if (!AppState.events || AppState.events.length === 0) {
+      telEventsStream.innerHTML = '<p class="text-muted" style="padding:12px; font-size:13px; text-align:center;">No application events recorded yet.</p>';
+    } else {
+      const recent = AppState.events.slice(-15).reverse();
+      telEventsStream.innerHTML = recent.map(ev => `
+        <div style="display:flex; justify-content:space-between; padding:6px 12px; border-bottom:1px solid var(--border-color); font-size:12px;">
+          <span style="font-family:var(--font-mono); color:var(--primary);">${escapeHtml(ev.name)}</span>
+          <span class="text-muted" style="font-size:11px;">${new Date(ev.timestamp).toLocaleTimeString()}</span>
+        </div>
+      `).join('');
+    }
+  }
+
+  // Legacy/Fallback Telemetry IDs
   const mLeads = document.getElementById('m-leads-count');
   const mEvents = document.getElementById('m-events-count');
   const mPro = document.getElementById('m-pro-status');
@@ -846,8 +863,8 @@ function renderTelemetryData() {
 
   if (mLeads) mLeads.textContent = leadsCount;
   if (mEvents) mEvents.textContent = eventsCount;
-  if (mPro) mPro.textContent = AppState.isPro ? 'PRO (Active)' : 'FREE TIER';
-  if (mDaily) mDaily.textContent = AppState.isPro ? '$29.00' : '$0.00';
+  if (mPro) mPro.textContent = proLabel;
+  if (mDaily) mDaily.textContent = '$0.00 (Beta)';
 
   const logBody = document.getElementById('telemetry-event-logs');
   if (logBody) {

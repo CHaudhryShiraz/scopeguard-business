@@ -92,8 +92,8 @@
           <span class="theme-icon">🌙</span>
         </button>
         <button class="btn btn-primary btn-sm" onclick="openProModal()">
-          <span>Unlock Pro</span>
-          <span class="hot-tag">$9</span>
+          <span>Pro Toolkit</span>
+          <span class="hot-tag" style="background:rgba(255,255,255,0.25); color:#fff; font-size:10px;">Beta</span>
         </button>
       </div>
     </div>
@@ -871,48 +871,33 @@ Best regards,
   <div class="modal-overlay" id="pro-modal">
     <div class="modal-card">
       <button class="modal-close" onclick="closeProModal()">✕</button>
-      <div class="modal-badge">SCOPEGUARD PRO</div>
+      <div class="modal-badge">SCOPEGUARD PRO — COMING SOON</div>
       <h2 class="modal-title">Never Lose Another Dollar to Unpaid Client Requests</h2>
-      <p class="modal-sub">Upgrade to the complete agency toolkit. One recovered change order pays for this 50x over.</p>
+      <p class="modal-sub">ScopeGuard is currently in free public beta. Upgrade to the complete agency toolkit when Pro launches.</p>
 
-      <div class="pricing-card-grid">
-        <div class="pricing-card">
-          <div class="tier-name">Monthly Pro</div>
-          <div class="tier-price">$9 <span>/ month</span></div>
+      <div class="pricing-card-grid pricing-card-single">
+        <div class="pricing-card highlighted-pricing">
+          <div class="popular-ribbon">EARLY ADOPTER VALUE</div>
+          <div class="tier-name">Lifetime Agency Pass</div>
+          <div class="tier-price">$29 <span>one-time (Planned)</span></div>
           <ul class="tier-perks">
             <li>✓ Unlimited Custom Change Orders</li>
             <li>✓ Custom Agency Branding & Logo on PDFs</li>
             <li>✓ 20+ Master Scope Defense Email Scripts</li>
             <li>✓ Full Master Services Agreement (MSA) Builder</li>
-            <li>✓ Cloud Project History & Local Vault</li>
-          </ul>
-          <button class="btn btn-outline btn-block" onclick="simulateCheckout('monthly_9')">
-            Subscribe for $9/mo
-          </button>
-        </div>
-
-        <div class="pricing-card highlighted-pricing">
-          <div class="popular-ribbon">BEST VALUE</div>
-          <div class="tier-name">Lifetime Agency Pass</div>
-          <div class="tier-price">$29 <span>one-time</span></div>
-          <ul class="tier-perks">
-            <li>✓ Everything in Monthly Pro</li>
             <li>✓ <strong>Lifetime Access</strong> (No Recurring Fees)</li>
             <li>✓ White-label Client Portal Ready</li>
-            <li>✓ Multi-Currency Support (USD, EUR, GBP, CAD)</li>
-            <li>✓ Priority Email Support</li>
+            <li>✓ Multi-Currency Support (USD, EUR, GBP, CAD, PKR)</li>
+            <li>✓ Priority Direct Support</li>
           </ul>
-          <button class="btn btn-primary btn-block" onclick="simulateCheckout('lifetime_29')">
-            Get Lifetime Pass ($29)
+          <button class="btn btn-secondary btn-block" disabled style="opacity:0.65; cursor:not-allowed;">
+            🔒 Pro — Coming Soon in v1.1
           </button>
+          <p class="text-muted text-center" style="font-size:12px; margin-top:12px; margin-bottom:0;">
+            All core calculators, builders, and email templates are currently 100% free during Beta.
+          </p>
         </div>
       </div>
-
-      <div class="coupon-row">
-        <input type="text" id="coupon-code" placeholder="Enter Promo Code (Try: AUTONOMOUS100)">
-        <button class="btn btn-secondary" onclick="applyCoupon()">Apply</button>
-      </div>
-      <div id="coupon-feedback"></div>
     </div>
   </div>
 
