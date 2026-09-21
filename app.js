@@ -604,30 +604,32 @@ function shareCalculation(platform) {
 }
 
 function saveDraftJSON() {
+  const coNum = document.getElementById('co-number') ? document.getElementById('co-number').value : 'CO-001';
   const draftData = {
     version: '1.0',
     savedAt: new Date().toISOString(),
     formData: {
-      clientName: document.getElementById('co-client-name').value,
-      clientCompany: document.getElementById('co-client-company').value,
-      yourName: document.getElementById('co-your-name').value,
-      yourCompany: document.getElementById('co-your-company').value,
-      projectTitle: document.getElementById('co-project-title').value,
-      originalSowDate: document.getElementById('co-original-sow-date').value,
-      amendmentNumber: document.getElementById('co-amendment-num').value,
-      issueDate: document.getElementById('co-issue-date').value,
-      requestSummary: document.getElementById('co-request-summary').value,
-      costImpact: document.getElementById('co-cost-impact').value,
-      timeImpact: document.getElementById('co-time-impact').value,
-      depositReq: document.getElementById('co-deposit-req').value,
-      specialNotes: document.getElementById('co-special-notes').value,
-      items: collectChangeOrderItems()
+      clientName: document.getElementById('co-client-name')?.value || '',
+      providerName: document.getElementById('co-provider-name')?.value || '',
+      projectTitle: document.getElementById('co-project-title')?.value || '',
+      coNumber: document.getElementById('co-number')?.value || 'CO-001',
+      coDate: document.getElementById('co-date')?.value || '',
+      scopeDesc: document.getElementById('co-scope-desc')?.value || '',
+      feeType: document.getElementById('co-fee-type')?.value || 'fixed',
+      fixedAmount: document.getElementById('co-fixed-amount')?.value || '850',
+      hourlyRate: document.getElementById('co-hourly-rate')?.value || '85',
+      estimatedHours: document.getElementById('co-estimated-hours')?.value || '10',
+      timelineExtension: document.getElementById('co-timeline-extension')?.value || '5',
+      revisionCap: document.getElementById('co-revision-cap')?.value || '1 consolidated round of minor tweaks',
+      paymentTerms: document.getElementById('co-payment-terms')?.value || '100% upfront prior to commencing out-of-scope work',
+      specialNotes: document.getElementById('co-special-notes')?.value || ''
     }
   };
 
   const blob = new Blob([JSON.stringify(draftData, null, 2)], { type: 'application/json' });
   const link = document.createElement('a');
-  const filename = `ScopeGuard_CO_${document.getElementById('co-amendment-num').value || 'Draft'}_${new Date().toISOString().slice(0, 10)}.json`;
+  const safeNum = (coNum || 'Draft').replace(/[^a-zA-Z0-9_-]/g, '_');
+  const filename = `ScopeGuard_CO_${safeNum}_${new Date().toISOString().slice(0, 10)}.json`;
   link.href = URL.createObjectURL(blob);
   link.download = filename;
   link.click();
@@ -653,38 +655,23 @@ function handleDraftFileSelect(event) {
         throw new Error('Invalid ScopeGuard draft format.');
       }
       const data = draft.formData;
-      document.getElementById('co-client-name').value = data.clientName || '';
-      document.getElementById('co-client-company').value = data.clientCompany || '';
-      document.getElementById('co-your-name').value = data.yourName || '';
-      document.getElementById('co-your-company').value = data.yourCompany || '';
-      document.getElementById('co-project-title').value = data.projectTitle || '';
-      document.getElementById('co-original-sow-date').value = data.originalSowDate || '';
-      document.getElementById('co-amendment-num').value = data.amendmentNumber || '01';
-      document.getElementById('co-issue-date').value = data.issueDate || '';
-      document.getElementById('co-request-summary').value = data.requestSummary || '';
-      document.getElementById('co-cost-impact').value = data.costImpact || '850';
-      document.getElementById('co-time-impact').value = data.timeImpact || '5';
-      document.getElementById('co-deposit-req').value = data.depositReq || '50';
-      document.getElementById('co-special-notes').value = data.specialNotes || '';
-
-      // Populate items
-      const itemsContainer = document.getElementById('co-items-container');
-      itemsContainer.innerHTML = '';
-      if (Array.isArray(data.items) && data.items.length > 0) {
-        data.items.forEach(item => {
-          const row = document.createElement('div');
-          row.className = 'co-item-row';
-          row.innerHTML = `
-            <input type="text" class="form-input co-item-desc" value="${escapeHtml(item.desc || '')}" placeholder="Description of out-of-scope work..." oninput="updateChangeOrderPreview()">
-            <input type="number" class="form-input co-item-hours" value="${item.hours || 0}" placeholder="Hrs" oninput="updateChangeOrderPreview()">
-            <input type="number" class="form-input co-item-rate" value="${item.rate || 0}" placeholder="Rate" oninput="updateChangeOrderPreview()">
-            <button type="button" class="btn-remove-item" onclick="removeChangeOrderItem(this)">✕</button>
-          `;
-          itemsContainer.appendChild(row);
-        });
-      } else {
-        addChangeOrderItem();
+      if (document.getElementById('co-client-name')) document.getElementById('co-client-name').value = data.clientName || data.clientCompany || '';
+      if (document.getElementById('co-provider-name')) document.getElementById('co-provider-name').value = data.providerName || data.yourName || '';
+      if (document.getElementById('co-project-title')) document.getElementById('co-project-title').value = data.projectTitle || '';
+      if (document.getElementById('co-number')) document.getElementById('co-number').value = data.coNumber || data.amendmentNumber || 'CO-001';
+      if (document.getElementById('co-date')) document.getElementById('co-date').value = data.coDate || data.issueDate || '';
+      if (document.getElementById('co-scope-desc')) document.getElementById('co-scope-desc').value = data.scopeDesc || data.requestSummary || '';
+      if (document.getElementById('co-fee-type')) {
+        document.getElementById('co-fee-type').value = data.feeType || 'fixed';
+        toggleFeeInputs();
       }
+      if (document.getElementById('co-fixed-amount')) document.getElementById('co-fixed-amount').value = data.fixedAmount || data.costImpact || '850';
+      if (document.getElementById('co-hourly-rate')) document.getElementById('co-hourly-rate').value = data.hourlyRate || '85';
+      if (document.getElementById('co-estimated-hours')) document.getElementById('co-estimated-hours').value = data.estimatedHours || '10';
+      if (document.getElementById('co-timeline-extension')) document.getElementById('co-timeline-extension').value = data.timelineExtension || data.timeImpact || '5';
+      if (document.getElementById('co-revision-cap')) document.getElementById('co-revision-cap').value = data.revisionCap || '1 consolidated round of minor tweaks';
+      if (document.getElementById('co-payment-terms')) document.getElementById('co-payment-terms').value = data.paymentTerms || '100% upfront prior to commencing out-of-scope work';
+      if (document.getElementById('co-special-notes')) document.getElementById('co-special-notes').value = data.specialNotes || '';
 
       updateChangeOrderPreview();
       showToast('📂 Change order draft loaded successfully!');
@@ -763,6 +750,17 @@ function openVaultModal() {
 
 function closeVaultModal() {
   const modal = document.getElementById('vault-modal');
+  if (modal) modal.classList.remove('active');
+}
+
+function openLegalModal() {
+  const modal = document.getElementById('legal-modal');
+  if (modal) modal.classList.add('active');
+  logEvent('legal_modal_opened');
+}
+
+function closeLegalModal() {
+  const modal = document.getElementById('legal-modal');
   if (modal) modal.classList.remove('active');
 }
 
@@ -907,5 +905,4 @@ function showToast(message) {
     toast.style.transition = 'all 0.3s ease';
     setTimeout(() => toast.remove(), 300);
   }, 3200);
-}
 }
