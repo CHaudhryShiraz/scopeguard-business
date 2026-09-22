@@ -8,7 +8,7 @@
 // ==========================================
 const AppState = {
   theme: localStorage.getItem('sg_theme') || 'dark',
-  isPro: localStorage.getItem('sg_is_pro') === 'true',
+  isPro: true, // 100% Free & Unlocked — All features open for all users
   leads: JSON.parse(localStorage.getItem('sg_leads') || '[]'),
   events: JSON.parse(localStorage.getItem('sg_events') || '[]'),
   currentView: 'calc-view'
@@ -67,7 +67,22 @@ document.addEventListener('DOMContentLoaded', () => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
       const targetTab = link.getAttribute('data-tab');
-      if (targetTab) switchView(targetTab);
+      const href = link.getAttribute('href');
+      if (targetTab) {
+        switchView(targetTab);
+      } else if (href && href.startsWith('#')) {
+        const targetId = href.substring(1);
+        if (targetId === 'knowledge-base') {
+          switchView('affiliate-view');
+          setTimeout(() => {
+            const el = document.getElementById(targetId);
+            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 150);
+        } else {
+          const el = document.getElementById(targetId);
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
     });
   });
 
@@ -869,7 +884,7 @@ function closeTelemetryModal() {
 function renderTelemetryData() {
   const leadsCount = AppState.leads ? AppState.leads.length : 0;
   const eventsCount = AppState.events ? AppState.events.length : 0;
-  const proLabel = AppState.isPro ? 'PRO PREVIEW (Beta)' : 'FREE PREVIEW';
+  const proLabel = '100% UNLOCKED (Free)';
 
   // Primary Telemetry Modal IDs
   const telEvents = document.getElementById('tel-total-events');

@@ -43,6 +43,20 @@
   </url>
 
   <url>
+    <loc>https://scopeguard.app/#toolkit</loc>
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://scopeguard.app/#knowledge-base</loc>
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
     <loc>https://scopeguard.app/#pricing</loc>
     <lastmod>2026-09-22</lastmod>
     <changefreq>weekly</changefreq>

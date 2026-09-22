@@ -29,7 +29,7 @@ function renderEnhancedTelemetryConsole() {
   // Update summary metrics
   updateElement('tel-total-events', stats.totalEvents);
   updateElement('tel-total-leads', leads.length);
-  updateElement('tel-pro-status', AppState.isPro ? 'PRO' : 'Free');
+  updateElement('tel-pro-status', '100% Free & Unlocked');
 
   // Update detailed metrics
   updateElement('tel-loss-calculations', metrics.lossCalculations);
