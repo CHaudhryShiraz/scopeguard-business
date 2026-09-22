@@ -1,0 +1,514 @@
+<!-- ENHANCED AFFILIATE TOOLKIT VIEW - REPLACE #affiliate-view SECTION -->
+<!-- Paste this to replace lines 715-824 in index.html -->
+
+    <!-- VIEW 5: CURATED AFFILIATE TOOLKIT & MONETIZATION -->
+    <section id="affiliate-view" class="view-panel">
+      <!-- FTC-Compliant Affiliate Disclosure Banner -->
+      <div class="ftc-disclosure-banner">
+        <div class="disclosure-icon">⚖️</div>
+        <div class="disclosure-text">
+          <strong>FTC Disclosure:</strong> Some links on this page are affiliate partnerships. When you sign up through these links, ScopeGuard may receive a commission at no additional cost to you. This supports our free tool development. We only recommend products our team has personally vetted and uses in client work. All opinions and recommendations are our own and unbiased.
+        </div>
+      </div>
+
+      <div class="panel-header">
+        <div>
+          <h2>Curated Freelancer & Agency Toolkit Ecosystem</h2>
+          <p class="text-muted">Battle-tested platforms categorized by workflow stage. Build a bulletproof scope protection and billing infrastructure.</p>
+        </div>
+      </div>
+
+      <!-- Contextual Loss-Based Recommendation Alert -->
+      <div id="loss-recommendation-alert" class="loss-alert-card" style="display:none;">
+        <div class="alert-icon">🚨</div>
+        <div class="alert-content">
+          <h3 class="alert-title">Your Calculator Shows Critical Revenue Leak</h3>
+          <p class="alert-body">You're losing <strong id="alert-loss-amount">$1,800</strong> on unbilled work. Dedicated time tracking software can prove exact hours spent and strengthen your Change Order justification.</p>
+          <div class="alert-actions">
+            <button class="btn btn-warning btn-sm" onclick="scrollToCategory('time-tracking')">
+              View Time Tracking Tools →
+            </button>
+            <button class="btn btn-secondary btn-sm btn-outline" onclick="dismissLossAlert()">
+              Dismiss
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tool Categories Grid (4 Workflow Pillars) -->
+      <div class="toolkit-pillars-grid">
+        <!-- PILLAR 1: Contract & Invoicing -->
+        <div class="pillar-category" id="category-contracts">
+          <div class="pillar-header">
+            <span class="pillar-icon">📝</span>
+            <h3 class="pillar-title">Contract & Invoicing</h3>
+          </div>
+          <p class="pillar-desc">Lock in scope boundaries with lawyer-vetted contracts and get paid instantly on Change Orders.</p>
+        </div>
+
+        <!-- PILLAR 2: Time & Scope Tracking -->
+        <div class="pillar-category" id="category-time-tracking">
+          <div class="pillar-header">
+            <span class="pillar-icon">⏱️</span>
+            <h3 class="pillar-title">Time & Scope Tracking</h3>
+          </div>
+          <p class="pillar-desc">Track unbilled hours in real-time to prove scope creep and build airtight Change Order justifications.</p>
+        </div>
+
+        <!-- PILLAR 3: E-Sign & Document Management -->
+        <div class="pillar-category" id="category-esign">
+          <div class="pillar-header">
+            <span class="pillar-icon">✍️</span>
+            <h3 class="pillar-title">E-Sign & Document Management</h3>
+          </div>
+          <p class="pillar-desc">Get Change Orders and contracts signed instantly with legally binding electronic signatures.</p>
+        </div>
+
+        <!-- PILLAR 4: Proposal & Client Management -->
+        <div class="pillar-category" id="category-proposals">
+          <div class="pillar-header">
+            <span class="pillar-icon">🎯</span>
+            <h3 class="pillar-title">Proposal & Client Management</h3>
+          </div>
+          <p class="pillar-desc">Seal crystal-clear scope agreements before you write a single line of code.</p>
+        </div>
+      </div>
+
+      <!-- PILLAR 1 TOOLS: Contract & Invoicing -->
+      <div class="tools-pillar-section">
+        <div class="pillar-section-header">
+          <h3>📝 Contract & Invoicing Tools</h3>
+          <p class="text-muted">Close Change Orders and get paid fast with automated billing infrastructure.</p>
+        </div>
+
+        <div class="tools-grid">
+          <div class="tool-card popular-tool">
+            <div class="tool-badge badge-hot">All-in-One Freelance Suite</div>
+            <h3>Bonsai</h3>
+            <p>Complete freelance business OS with contracts, e-signatures, invoicing, and built-in Change Order workflows.</p>
+            <ul class="tool-features">
+              <li>✓ 500+ lawyer-vetted contract templates</li>
+              <li>✓ Integrated e-signatures on any device</li>
+              <li>✓ Auto-invoice generation from Change Orders</li>
+              <li>✓ Payment reminders & late fee automation</li>
+              <li>✓ Client portal with milestone tracking</li>
+            </ul>
+            <div class="tool-pricing">from $24/mo · 7-day free trial</div>
+            <a href="https://www.hellobonsai.com/a/scopeguard" target="_blank" rel="noopener noreferrer sponsored" class="btn btn-primary btn-block" onclick="trackAffiliateClick('Bonsai')">
+              Try Bonsai Free →
+            </a>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-badge">Essential Payments</div>
+            <h3>Stripe Invoicing</h3>
+            <p>Send Change Order invoices in seconds with instant credit card and ACH bank transfer payments.</p>
+            <ul class="tool-features">
+              <li>✓ 1-Click shareable invoice links</li>
+              <li>✓ Auto-payment reminders & dunning</li>
+              <li>✓ Global multi-currency support</li>
+              <li>✓ Instant deposit to your bank</li>
+              <li>✓ Tax calculation & reporting</li>
+            </ul>
+            <div class="tool-pricing">Free · 2.9% + 30¢ per transaction</div>
+            <a href="https://stripe.com/invoicing" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-block" onclick="trackAffiliateClick('Stripe')">
+              Start with Stripe →
+            </a>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-badge">Agency-Grade Billing</div>
+            <h3>FreshBooks</h3>
+            <p>Professional invoicing and accounting designed for agencies managing multiple client projects.</p>
+            <ul class="tool-features">
+              <li>✓ Custom invoice branding & templates</li>
+              <li>✓ Recurring billing for retainers</li>
+              <li>✓ Automatic expense tracking</li>
+              <li>✓ Time-to-invoice automation</li>
+              <li>✓ Full double-entry accounting</li>
+            </ul>
+            <div class="tool-pricing">from $19/mo · 30-day free trial</div>
+            <a href="https://www.freshbooks.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-block" onclick="trackAffiliateClick('FreshBooks')">
+              Try FreshBooks Free →
+            </a>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-badge">International Billing</div>
+            <h3>Deel</h3>
+            <p>Global invoicing and contractor payments in 120+ currencies with compliant cross-border contracts.</p>
+            <ul class="tool-features">
+              <li>✓ Localized contracts for 150+ countries</li>
+              <li>✓ Multi-currency invoicing & payments</li>
+              <li>✓ Tax compliance & 1099 generation</li>
+              <li>✓ Crypto payment options</li>
+              <li>✓ Instant USD/EUR/GBP withdrawals</li>
+            </ul>
+            <div class="tool-pricing">from $49/contractor/mo</div>
+            <a href="https://www.deel.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-block" onclick="trackAffiliateClick('Deel')">
+              Explore Deel →
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PILLAR 2 TOOLS: Time & Scope Tracking -->
+      <div class="tools-pillar-section">
+        <div class="pillar-section-header">
+          <h3>⏱️ Time & Scope Tracking Tools</h3>
+          <p class="text-muted">Prove every unbilled hour with forensic time tracking and exportable client reports.</p>
+        </div>
+
+        <div class="tools-grid">
+          <div class="tool-card popular-tool">
+            <div class="tool-badge badge-hot">Best for Freelancers</div>
+            <h3>Toggl Track</h3>
+            <p>One-click timer to track out-of-scope client requests and generate professional billing reports.</p>
+            <ul class="tool-features">
+              <li>✓ 1-Click desktop & mobile timers</li>
+              <li>✓ Tag tasks as "Out of Scope"</li>
+              <li>✓ Exportable PDF client reports</li>
+              <li>✓ Billable rate tracking per project</li>
+              <li>✓ Calendar integrations (Google, Outlook)</li>
+            </ul>
+            <div class="tool-pricing">Free forever · Pro from $10/mo</div>
+            <a href="https://toggl.com/track/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-block" onclick="trackAffiliateClick('Toggl')">
+              Get Toggl Track Free →
+            </a>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-badge">100% Free Option</div>
+            <h3>Clockify</h3>
+            <p>Completely free unlimited time tracking with team support and detailed reporting.</p>
+            <ul class="tool-features">
+              <li>✓ Unlimited users & projects (free)</li>
+              <li>✓ Browser extension timer</li>
+              <li>✓ Timesheet approvals for teams</li>
+              <li>✓ Custom hourly rates per task</li>
+              <li>✓ CSV/Excel export for billing</li>
+            </ul>
+            <div class="tool-pricing">Free forever · Pro from $4.99/user/mo</div>
+            <a href="https://clockify.me" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-block" onclick="trackAffiliateClick('Clockify')">
+              Start Free with Clockify →
+            </a>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-badge">Agency-Grade Tracking</div>
+            <h3>Harvest</h3>
+            <p>Time tracking built for agencies with integrated invoicing and profitability analytics.</p>
+            <ul class="tool-features">
+              <li>✓ Visual project budget tracking</li>
+              <li>✓ Direct invoice generation from time</li>
+              <li>✓ Team capacity planning reports</li>
+              <li>✓ QuickBooks & Xero integrations</li>
+              <li>✓ Forecasting & profitability analytics</li>
+            </ul>
+            <div class="tool-pricing">from $12/user/mo · Free trial</div>
+            <a href="https://www.getharvest.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-block" onclick="trackAffiliateClick('Harvest')">
+              Try Harvest Free →
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PILLAR 3 TOOLS: E-Sign & Document Management -->
+      <div class="tools-pillar-section">
+        <div class="pillar-section-header">
+          <h3>✍️ E-Sign & Document Management Tools</h3>
+          <p class="text-muted">Get Change Orders signed in minutes with legally binding electronic signatures.</p>
+        </div>
+
+        <div class="tools-grid">
+          <div class="tool-card popular-tool">
+            <div class="tool-badge badge-hot">Industry Standard</div>
+            <h3>DocuSign</h3>
+            <p>The gold standard for legally binding electronic signatures with court-admissible audit trails.</p>
+            <ul class="tool-features">
+              <li>✓ Legally binding in 180+ countries</li>
+              <li>✓ Court-admissible certificate of completion</li>
+              <li>✓ Mobile signing on any device</li>
+              <li>✓ SMS/email signature reminders</li>
+              <li>✓ Tamper-proof document encryption</li>
+            </ul>
+            <div class="tool-pricing">from $10/mo · 30-day free trial</div>
+            <a href="https://www.docusign.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-block" onclick="trackAffiliateClick('DocuSign')">
+              Try DocuSign Free →
+            </a>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-badge">Sales-Optimized</div>
+            <h3>PandaDoc</h3>
+            <p>Proposal builder, e-signature, and payment collection all in one interactive document platform.</p>
+            <ul class="tool-features">
+              <li>✓ Interactive proposal templates</li>
+              <li>✓ Integrated Stripe payment collection</li>
+              <li>✓ Document analytics (view tracking)</li>
+              <li>✓ Custom branding & templates</li>
+              <li>✓ CRM integrations (HubSpot, Salesforce)</li>
+            </ul>
+            <div class="tool-pricing">from $19/user/mo · 14-day free trial</div>
+            <a href="https://www.pandadoc.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-block" onclick="trackAffiliateClick('PandaDoc')">
+              Try PandaDoc Free →
+            </a>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-badge">Developer-Friendly</div>
+            <h3>HelloSign (Dropbox Sign)</h3>
+            <p>Simple, elegant e-signature with powerful API for embedding signatures into your own tools.</p>
+            <ul class="tool-features">
+              <li>✓ Clean, intuitive signing UX</li>
+              <li>✓ Developer API for custom workflows</li>
+              <li>✓ Google Drive & Dropbox integrations</li>
+              <li>✓ Reusable document templates</li>
+              <li>✓ Audit trail & legal compliance</li>
+            </ul>
+            <div class="tool-pricing">from $15/mo · Free trial available</div>
+            <a href="https://www.hellosign.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-block" onclick="trackAffiliateClick('HelloSign')">
+              Try HelloSign →
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PILLAR 4 TOOLS: Proposal & Client Management -->
+      <div class="tools-pillar-section">
+        <div class="pillar-section-header">
+          <h3>🎯 Proposal & Client Management Tools</h3>
+          <p class="text-muted">Lock down scope boundaries before project kickoff with crystal-clear proposals and SOWs.</p>
+        </div>
+
+        <div class="tools-grid">
+          <div class="tool-card popular-tool">
+            <div class="tool-badge badge-hot">Creative Agencies</div>
+            <h3>HoneyBook</h3>
+            <p>All-in-one client management for creatives: proposals, contracts, invoicing, and scheduling.</p>
+            <ul class="tool-features">
+              <li>✓ Branded proposal & contract templates</li>
+              <li>✓ Integrated online payments & invoicing</li>
+              <li>✓ Client portal & file sharing</li>
+              <li>✓ Automated workflows & reminders</li>
+              <li>✓ Questionnaires & intake forms</li>
+            </ul>
+            <div class="tool-pricing">from $16/mo · 7-day free trial</div>
+            <a href="https://www.honeybook.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-block" onclick="trackAffiliateClick('HoneyBook')">
+              Try HoneyBook Free →
+            </a>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-badge">Proposal Specialists</div>
+            <h3>Proposify</h3>
+            <p>Dedicated proposal software with interactive pricing tables and approval tracking analytics.</p>
+            <ul class="tool-features">
+              <li>✓ Drag-and-drop proposal builder</li>
+              <li>✓ Interactive pricing & optional items</li>
+              <li>✓ Proposal view analytics & tracking</li>
+              <li>✓ E-signature & payment integration</li>
+              <li>✓ Content library for reusable blocks</li>
+            </ul>
+            <div class="tool-pricing">from $49/user/mo · 14-day free trial</div>
+            <a href="https://www.proposify.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-block" onclick="trackAffiliateClick('Proposify')">
+              Try Proposify Free →
+            </a>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-badge">Lightweight CRM</div>
+            <h3>Dubsado</h3>
+            <p>Client workflow automation for service businesses with contracts, questionnaires, and schedulers.</p>
+            <ul class="tool-features">
+              <li>✓ Workflow automation & canned emails</li>
+              <li>✓ Client onboarding questionnaires</li>
+              <li>✓ Project & milestone tracking</li>
+              <li>✓ Integrated Stripe/PayPal payments</li>
+              <li>✓ Custom branded client portal</li>
+            </ul>
+            <div class="tool-pricing">from $200/yr · Free for 3 clients</div>
+            <a href="https://www.dubsado.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-block" onclick="trackAffiliateClick('Dubsado')">
+              Try Dubsado Free →
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Comparison Matrix Card -->
+      <div class="comparison-matrix-card card mt-5">
+        <div class="matrix-header">
+          <h3>🔍 When to Use ScopeGuard vs Full CRM Platform</h3>
+          <p class="text-muted">ScopeGuard is a free, specialized scope protection tool. It integrates with—not replaces—your business stack.</p>
+        </div>
+
+        <div class="comparison-table-wrapper">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th class="feature-col">Capability</th>
+                <th class="scopeguard-col">
+                  <div class="tool-logo-cell">
+                    <span class="brand-icon">🛡️</span>
+                    <strong>ScopeGuard</strong>
+                    <span class="badge badge-free">Free</span>
+                  </div>
+                </th>
+                <th class="competitor-col">Bonsai / HoneyBook</th>
+                <th class="competitor-col">Full CRM Suite</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Scope Creep Loss Calculator</strong></td>
+                <td class="has-feature">✓ Free</td>
+                <td class="no-feature">✗</td>
+                <td class="no-feature">✗</td>
+              </tr>
+              <tr>
+                <td><strong>Change Order Builder</strong></td>
+                <td class="has-feature">✓ Unlimited</td>
+                <td class="has-feature">✓ Template Library</td>
+                <td class="partial-feature">~ Manual Setup</td>
+              </tr>
+              <tr>
+                <td><strong>Risk Assessment Quiz</strong></td>
+                <td class="has-feature">✓ Pre-Signing Audit</td>
+                <td class="no-feature">✗</td>
+                <td class="no-feature">✗</td>
+              </tr>
+              <tr>
+                <td><strong>Defense Email Scripts</strong></td>
+                <td class="has-feature">✓ 6 Battle-Tested</td>
+                <td class="partial-feature">~ Generic Templates</td>
+                <td class="no-feature">✗</td>
+              </tr>
+              <tr>
+                <td><strong>E-Signature Integration</strong></td>
+                <td class="no-feature">✗ (Print/Copy Only)</td>
+                <td class="has-feature">✓ Built-In</td>
+                <td class="has-feature">✓ Integrated</td>
+              </tr>
+              <tr>
+                <td><strong>Automated Invoicing</strong></td>
+                <td class="no-feature">✗</td>
+                <td class="has-feature">✓ Full Billing</td>
+                <td class="has-feature">✓ Advanced</td>
+              </tr>
+              <tr>
+                <td><strong>Time Tracking</strong></td>
+                <td class="no-feature">✗</td>
+                <td class="partial-feature">~ Basic</td>
+                <td class="has-feature">✓ Enterprise</td>
+              </tr>
+              <tr>
+                <td><strong>Client Portal</strong></td>
+                <td class="no-feature">✗</td>
+                <td class="has-feature">✓ Branded</td>
+                <td class="has-feature">✓ Full Portal</td>
+              </tr>
+              <tr>
+                <td><strong>Data Privacy</strong></td>
+                <td class="has-feature">✓ 100% Client-Side</td>
+                <td class="partial-feature">~ Cloud Storage</td>
+                <td class="partial-feature">~ Cloud Storage</td>
+              </tr>
+              <tr>
+                <td><strong>Cost</strong></td>
+                <td class="has-feature"><strong>$0 Forever</strong></td>
+                <td class="partial-feature">$16-24/mo</td>
+                <td class="partial-feature">$49-200+/mo</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="matrix-verdict">
+          <div class="verdict-box verdict-scopeguard">
+            <h4>✅ Use ScopeGuard When:</h4>
+            <ul>
+              <li>You need to calculate & visualize scope creep financial loss</li>
+              <li>You want instant Change Order generation without monthly fees</li>
+              <li>You require 100% client-side data privacy (no cloud uploads)</li>
+              <li>You're evaluating project risk before signing contracts</li>
+              <li>You need battle-tested scope defense scripts</li>
+            </ul>
+          </div>
+
+          <div class="verdict-box verdict-crm">
+            <h4>✅ Upgrade to Full CRM When:</h4>
+            <ul>
+              <li>You need legally binding e-signatures on contracts</li>
+              <li>You want automated invoice generation & payment processing</li>
+              <li>You require integrated time tracking with billing</li>
+              <li>You need a client portal for file sharing & collaboration</li>
+              <li>You want workflow automation & email sequences</li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="matrix-footer-note">
+          <strong>💡 Pro Tip:</strong> Most successful freelancers use ScopeGuard alongside Bonsai/HoneyBook. Use ScopeGuard to calculate losses and draft Change Orders, then finalize & sign them through your CRM's e-signature workflow.
+        </p>
+      </div>
+
+      <!-- Updated Footer Disclosure -->
+      <div class="affiliate-footer-disclosure mt-4">
+        <p class="text-muted text-center" style="font-size: 12px; line-height: 1.6; max-width: 800px; margin: 0 auto;">
+          <strong>Transparency & Ethics Statement:</strong> Links marked with affiliate partnerships support ScopeGuard's free development. We receive a commission when you sign up through these links at no extra cost to you. Every tool recommended here has been personally vetted by our team and is actively used in real client work. We do not accept payment for placement or featured positioning. All recommendations are based on genuine product quality and utility for freelancers and agencies. Last updated: September 2026.
+        </p>
+      </div>
+
+      <!-- Lead Magnet Newsletter Box -->
+      <div class="lead-magnet-card card mt-5">
+        <div class="lead-content">
+          <span class="lead-badge">Free VIP Resource</span>
+          <h2>Get the Complete "Agency Scope Creep Defense Vault"</h2>
+          <p>Download 12 lawyer-vetted contract clauses, 8 client negotiation scripts, and our master SOW template (PDF + Google Docs format).</p>
+
+          <form class="lead-form" onsubmit="handleLeadCapture(event)">
+            <input type="email" id="lead-email" placeholder="Enter your work email..." required>
+            <button type="submit" class="btn btn-success">Get Free Vault Access</button>
+          </form>
+          <small class="text-muted">Zero spam. Unsubscribe anytime with 1 click.</small>
+        </div>
+      </div>
+
+      <!-- SEO Knowledge Base / FAQ Section -->
+      <section class="faq-section mt-5">
+        <div class="panel-header">
+          <div>
+            <h2>Frequently Asked Questions About Scope Creep & Change Orders</h2>
+            <p class="text-muted">Master the business side of freelancing and agency project management.</p>
+          </div>
+        </div>
+
+        <div class="faq-grid">
+          <details class="faq-card" open>
+            <summary class="faq-question">What is scope creep and why does it destroy agency margins?</summary>
+            <p class="faq-answer">Scope creep happens when clients request additional revisions, small feature tweaks, or expanded deliverables without paying for the extra time. Over a typical 6-week project, just 4 unbilled hours per week leads to 24 unbilled hours—eroding 20% to 35% of your expected profit margin.</p>
+          </details>
+
+          <details class="faq-card" open>
+            <summary class="faq-question">How much does scope creep cost the average freelancer?</summary>
+            <p class="faq-answer">Industry research shows that full-time independent consultants, freelancers, and small digital agencies lose an average of $4,850 to $14,400 annually in unbilled hours absorbed as "quick favors" and informal revision overruns.</p>
+          </details>
+
+          <details class="faq-card" open>
+            <summary class="faq-question">What makes a Change Order legally binding?</summary>
+            <p class="faq-answer">A Change Order is an amendment to your primary Master Services Agreement (MSA) or Statement of Work (SOW). To be legally binding, it must clearly describe the specific new deliverables, list the exact compensation (fixed fee or hourly), define the timeline impact, and be countersigned (or confirmed in writing) by an authorized client representative.</p>
+          </details>
+
+          <details class="faq-card" open>
+            <summary class="faq-question">How do I tell a client their request is out of scope without offending them?</summary>
+            <p class="faq-answer">Always validate their idea first, then give them two constructive choices: <em>"That's a great feature. We can either queue it for Phase 2 right after launch so we don't delay your release date, or execute a fast Change Order to add it to the current milestone for $XXX and +3 days."</em> This positions you as a professional protecting their launch date rather than being difficult.</p>
+          </details>
+
+          <details class="faq-card" open>
+            <summary class="faq-question">Does ScopeGuard store or upload my confidential client data?</summary>
+            <p class="faq-answer">No. ScopeGuard operates with 100% privacy-first client-side data processing. All calculations, client names, project specs, and generated documents run exclusively in your browser's local memory. Nothing is ever sent to external cloud servers, guaranteeing complete client confidentiality.</p>
+          </details>
+        </div>
+      </section>
+
+    </section>

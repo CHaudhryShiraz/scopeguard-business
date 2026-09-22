@@ -14,14 +14,20 @@ const AppState = {
   currentView: 'calc-view'
 };
 
-// Log internal business event
+// Log internal business event - now using enhanced telemetry system
 function logEvent(name, data = {}) {
-  const evt = { name, data, timestamp: new Date().toISOString() };
-  AppState.events.push(evt);
-  try {
-    localStorage.setItem('sg_events', JSON.stringify(AppState.events.slice(-100)));
-  } catch (e) {}
-  console.log(`[ScopeGuard Event] ${name}:`, data);
+  // Use new telemetry system if available
+  if (typeof ScopeguardTelemetry !== 'undefined') {
+    ScopeguardTelemetry.track(name, data);
+  } else {
+    // Fallback to legacy system
+    const evt = { name, data, timestamp: new Date().toISOString() };
+    AppState.events.push(evt);
+    try {
+      localStorage.setItem('sg_events', JSON.stringify(AppState.events.slice(-100)));
+    } catch (e) {}
+    console.log(`[ScopeGuard Event] ${name}:`, data);
+  }
 }
 
 // ==========================================
@@ -64,6 +70,11 @@ document.addEventListener('DOMContentLoaded', () => {
       if (targetTab) switchView(targetTab);
     });
   });
+
+  // Initialize Enhanced Affiliate Toolkit if present
+  if (typeof initEnhancedAffiliateToolkit === 'function') {
+    initEnhancedAffiliateToolkit();
+  }
 
   logEvent('app_loaded', { theme: AppState.theme, isPro: AppState.isPro });
 });
@@ -170,6 +181,14 @@ function runCalculator() {
   document.getElementById('hero-stat-loss').textContent = `$${projectLoss.toLocaleString()}`;
   document.getElementById('hero-stat-hours').textContent = `${totalUnbilledHours.toFixed(0)} hrs`;
   document.getElementById('hero-stat-recovered').textContent = `$${(projectLoss * 0.9).toLocaleString(undefined, {maximumFractionDigits: 0})}`;
+
+  // Log calculation run with sanitized metadata
+  logEvent('loss_calculation_run', { amount: projectLoss, duration: weeks });
+
+  // Trigger contextual loss recommendation if applicable
+  if (typeof checkAndShowLossRecommendation === 'function') {
+    checkAndShowLossRecommendation();
+  }
 }
 
 function resetCalculator() {
@@ -318,7 +337,8 @@ function clearChangeOrderForm() {
 
 function printChangeOrder() {
   updateChangeOrderPreview();
-  logEvent('co_printed', { client: document.getElementById('co-client-name').value });
+  logEvent('change_order_pdf_printed', { count: 1 });
+  logEvent('change_order_generated', { count: 1 });
   window.print();
 }
 
@@ -558,6 +578,38 @@ function resetRiskQuiz() {
   showToast('Risk quiz reset');
 }
 
+/**
+ * Toggle between Legacy (8-question) and v2.0 (12-dimension) Risk Diagnostics
+ */
+function toggleRiskDiagnosticVersion(version) {
+  const legacyContainer = document.getElementById('legacy-quiz-container');
+  const v2Container = document.getElementById('v2-diagnostic-container');
+  const toggleBtns = document.querySelectorAll('.risk-toggle-btn');
+
+  toggleBtns.forEach(btn => btn.classList.remove('active'));
+
+  if (version === 'v2') {
+    if (legacyContainer) legacyContainer.style.display = 'none';
+    if (v2Container) {
+      v2Container.style.display = 'block';
+      // Render v2 UI if not already rendered
+      if (typeof RiskDiagnosticV2 !== 'undefined' && !document.getElementById('risk-diagnostic-v2-form')) {
+        RiskDiagnosticV2.renderUI('risk-diagnostic-v2-container');
+      }
+    }
+    const v2Btn = Array.from(toggleBtns).find(btn => btn.innerText.includes('v2.0'));
+    if (v2Btn) v2Btn.classList.add('active');
+    logEvent('risk_diagnostic_version_switched', { version: 'v2' });
+  } else {
+    if (v2Container) v2Container.style.display = 'none';
+    if (legacyContainer) legacyContainer.style.display = 'block';
+    const legacyBtn = Array.from(toggleBtns).find(btn => btn.innerText.includes('Legacy'));
+    if (legacyBtn) legacyBtn.classList.add('active');
+    logEvent('risk_diagnostic_version_switched', { version: 'legacy' });
+  }
+}
+
+
 function loadQuizClausesToChangeOrder() {
   const clauses = Array.from(document.querySelectorAll('#quiz-clauses-list li')).map(li => li.innerText).join('\n');
   document.getElementById('co-special-notes').value = clauses;
@@ -573,7 +625,7 @@ function copyScript(elementId) {
   const text = document.getElementById(elementId).innerText;
   navigator.clipboard.writeText(text).then(() => {
     showToast('📋 Email template copied to clipboard!');
-    logEvent('script_copied', { scriptId: elementId });
+    logEvent('email_script_copied', { category: 'defense_script' });
   });
 }
 
@@ -636,7 +688,7 @@ function saveDraftJSON() {
   URL.revokeObjectURL(link.href);
 
   showToast('💾 Change order draft exported as JSON!');
-  logEvent('draft_json_saved');
+  logEvent('change_order_json_exported', { count: 1 });
 }
 
 function triggerLoadDraftJSON() {
@@ -712,11 +764,15 @@ function handleLeadCapture(e) {
   const email = emailInput.value.trim();
 
   if (email) {
-    AppState.leads.push({ email, date: new Date().toISOString() });
-    localStorage.setItem('sg_leads', JSON.stringify(AppState.leads));
+    if (typeof ScopeguardTelemetry !== 'undefined') {
+      ScopeguardTelemetry.captureLead(email);
+    } else {
+      AppState.leads.push({ email, date: new Date().toISOString() });
+      localStorage.setItem('sg_leads', JSON.stringify(AppState.leads));
+      logEvent('vault_lead_captured', { count: AppState.leads.length });
+    }
     emailInput.value = '';
     showToast('🎉 Access Granted! Unlocking your Scope Defense Vault...');
-    logEvent('lead_captured', { email });
     setTimeout(() => {
       openVaultModal();
     }, 600);
@@ -792,7 +848,7 @@ Generated by ScopeGuard (https://scopeguard.app)
 }
 
 function trackAffiliateClick(toolName) {
-  logEvent('affiliate_click', { tool: toolName });
+  logEvent('affiliate_link_clicked', { category: 'tool_recommendation' });
 }
 
 // ==========================================

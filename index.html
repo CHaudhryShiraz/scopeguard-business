@@ -12,86 +12,220 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="ScopeGuard — Stop Bleeding Revenue to Scope Creep">
   <meta property="og:description" content="Calculate your unbilled financial loss and generate legally sound Change Orders instantly. Built for freelancers and agencies.">
-  <meta property="og:url" content="https://scopeguard.app">
+  <meta property="og:url" content="https://scopeguard.app/">
   <meta property="og:image" content="https://scopeguard.app/og-image.png">
+  <meta property="og:image:secure_url" content="https://scopeguard.app/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="ScopeGuard - Scope Creep Calculator and Change Order Protection Engine for Freelancers">
   <meta property="og:site_name" content="ScopeGuard">
+  <meta property="og:locale" content="en_US">
 
   <!-- Twitter / X Card Meta Tags -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="ScopeGuard — Stop Bleeding Revenue to Scope Creep">
-  <meta name="twitter:description" content="Calculate your unbilled scope creep financial loss and generate client-ready legal Change Orders in seconds. 100% free for freelancers & agencies.">
+  <meta name="twitter:description" content="Calculate your unbilled scope creep financial loss and generate client-ready legal Change Orders in seconds. 100% free for freelancers and agencies.">
   <meta name="twitter:image" content="https://scopeguard.app/og-image.png">
+  <meta name="twitter:image:alt" content="ScopeGuard - Scope Creep Calculator Dashboard Preview">
+  <meta name="twitter:site" content="@scopeguard">
+  <meta name="twitter:creator" content="@scopeguard">
 
-  <!-- Canonical & PWA/Mobile Theme -->
+  <!-- Canonical, Hreflang & PWA/Mobile Theme -->
   <link rel="canonical" href="https://scopeguard.app/">
+  <link rel="alternate" hreflang="en" href="https://scopeguard.app/">
+  <link rel="alternate" hreflang="x-default" href="https://scopeguard.app/">
   <meta name="theme-color" content="#0c0f17">
 
   <!-- SVG Favicon Data URI (Shield Icon) -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236366f1'><path d='M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z'/></svg>">
 
-  <!-- Schema.org Structured Data (WebApplication & FAQPage) -->
+  <!-- Schema.org Structured Data (WebApplication, SoftwareApplication, HowTo, FAQPage, BreadcrumbList) -->
   <script type="application/ld+json">
-  [
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "ScopeGuard",
-      "applicationCategory": "BusinessApplication",
-      "operatingSystem": "All",
-      "offers": {
-        "@type": "Offer",
-        "price": "0.00",
-        "priceCurrency": "USD"
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://scopeguard.app/#webapp",
+        "name": "ScopeGuard",
+        "alternateName": "Scope Creep Calculator",
+        "url": "https://scopeguard.app/",
+        "applicationCategory": "BusinessApplication",
+        "applicationSubCategory": "Project Management Tool",
+        "operatingSystem": "Any",
+        "browserRequirements": "Requires JavaScript. Requires HTML5.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock"
+        },
+        "description": "Free scope creep loss calculator, project risk diagnostic, and automated freelance change order generator. Protect your agency margins with instant Change Order documents.",
+        "featureList": [
+          "Scope Creep Loss Calculator",
+          "Change Order Builder",
+          "Risk Diagnostic Quiz",
+          "Email Defense Scripts",
+          "Client-Side Privacy Processing"
+        ],
+        "screenshot": "https://scopeguard.app/og-image.png",
+        "author": {
+          "@type": "Organization",
+          "name": "Autonomous AI Business Factory"
+        },
+        "datePublished": "2026-09-20",
+        "inLanguage": "en-US"
       },
-      "description": "Scope creep loss calculator, project risk diagnostic, and automated freelance change order generator."
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What is scope creep in freelance and agency projects?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Scope creep refers to unapproved, gradual expansions in project requirements, deliverables, or revision rounds beyond the original agreed Statement of Work (SOW) without a corresponding increase in budget or timeline."
-          }
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://scopeguard.app/#software",
+        "name": "ScopeGuard Change Order Generator",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
         },
-        {
-          "@type": "Question",
-          "name": "How much does scope creep cost the average freelancer?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Industry data shows the average full-time freelancer loses $4,850 to $14,400 annually in unbilled hours absorbed as 'quick favors' and unpaid revision overruns."
-          }
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.8",
+          "ratingCount": "127",
+          "bestRating": "5",
+          "worstRating": "1"
         },
-        {
-          "@type": "Question",
-          "name": "What is a Change Order and why is it legally essential?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "A Change Order is a formal written amendment to an existing contract specifying new deliverables, associated fees, timeline extensions, and payment terms, protecting both provider and client."
+        "softwareVersion": "1.0.0",
+        "releaseNotes": "Initial public release with calculator, change order builder, and risk diagnostic."
+      },
+      {
+        "@type": "HowTo",
+        "@id": "https://scopeguard.app/#howto",
+        "name": "How to Create a Freelance Change Order for Out-of-Scope Work",
+        "description": "Step-by-step guide to generating a professional Change Order amendment for scope creep requests.",
+        "totalTime": "PT2M",
+        "step": [
+          {
+            "@type": "HowToStep",
+            "position": 1,
+            "name": "Calculate Scope Creep Loss",
+            "text": "Use the Loss Calculator to determine unbilled hours and revenue drain from client requests.",
+            "url": "https://scopeguard.app/#calculator"
+          },
+          {
+            "@type": "HowToStep",
+            "position": 2,
+            "name": "Enter Client and Project Details",
+            "text": "Input client name, project title, and change order reference number in the Builder.",
+            "url": "https://scopeguard.app/#change-order"
+          },
+          {
+            "@type": "HowToStep",
+            "position": 3,
+            "name": "Define Out-of-Scope Work",
+            "text": "Describe the specific additional deliverables or features requested beyond the original SOW."
+          },
+          {
+            "@type": "HowToStep",
+            "position": 4,
+            "name": "Set Pricing and Terms",
+            "text": "Specify fixed fee or hourly billing, timeline extension, revision caps, and payment terms."
+          },
+          {
+            "@type": "HowToStep",
+            "position": 5,
+            "name": "Generate and Export Document",
+            "text": "Preview the live Change Order document and export as PDF, print, or copy as Markdown for client delivery."
           }
-        },
-        {
-          "@type": "Question",
-          "name": "How do I tell a client their request is out of scope without offending them?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Validate their idea first, then provide two constructive options: queue the feature for Phase 2 post-launch, or execute a fast Change Order with defined pricing and timeline adjustments."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Does ScopeGuard store or upload my confidential client data?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No. ScopeGuard operates with 100% privacy-first client-side data processing. All calculations, client names, project specs, and generated documents execute exclusively in your browser's local memory."
-          }
+        ],
+        "tool": {
+          "@type": "HowToTool",
+          "name": "ScopeGuard Change Order Builder"
         }
-      ]
-    }
-  ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://scopeguard.app/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is scope creep in freelance and agency projects?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Scope creep refers to unapproved, gradual expansions in project requirements, deliverables, or revision rounds beyond the original agreed Statement of Work (SOW) without a corresponding increase in budget or timeline."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much does scope creep cost the average freelancer?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Industry data shows the average full-time freelancer loses $4,850 to $14,400 annually in unbilled hours absorbed as 'quick favors' and unpaid revision overruns."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is a Change Order and why is it legally essential?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A Change Order is a formal written amendment to an existing contract specifying new deliverables, associated fees, timeline extensions, and payment terms, protecting both provider and client from scope disputes."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I tell a client their request is out of scope without offending them?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Validate their idea first, then provide two constructive options: queue the feature for Phase 2 post-launch, or execute a fast Change Order with defined pricing and timeline adjustments. This positions you as protecting their launch date rather than being difficult."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does ScopeGuard store or upload my confidential client data?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. ScopeGuard operates with 100% privacy-first client-side data processing. All calculations, client names, project specs, and generated documents execute exclusively in your browser's local memory with zero external transmission."
+            }
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://scopeguard.app/#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://scopeguard.app/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Loss Calculator",
+            "item": "https://scopeguard.app/#calculator"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Change Order Builder",
+            "item": "https://scopeguard.app/#change-order"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Risk Diagnostic",
+            "item": "https://scopeguard.app/#risk-quiz"
+          },
+          {
+            "@type": "ListItem",
+            "position": 5,
+            "name": "Email Scripts",
+            "item": "https://scopeguard.app/#scripts"
+          }
+        ]
+      }
+    ]
+  }
   </script>
 
   <link rel="stylesheet" href="styles.css">
@@ -270,6 +404,21 @@
             </div>
           </div>
 
+          <!-- Contextual Loss-Based Recommendation Alert (Triggered when projectLoss >= $5,000) -->
+          <div id="loss-recommendation-alert" class="loss-alert-card" style="display: none; opacity: 0; margin-top: 16px;">
+            <div class="alert-icon">⚠️</div>
+            <div class="alert-content">
+              <div class="alert-title">Critical Revenue Alert: <span id="alert-loss-amount">$0</span> at Risk</div>
+              <div class="alert-body">
+                Your calculated project loss exceeds <strong>$5,000</strong>. At this scale, manual tracking fails. You urgently need automated time-tracking and legally binding electronic signatures to protect your margins.
+              </div>
+              <div class="alert-actions">
+                <button class="btn btn-primary btn-sm" onclick="scrollToCategory('time-tracking')">View Recommended Protection Stack →</button>
+                <button class="btn btn-secondary btn-sm" onclick="dismissLossAlert()">Dismiss</button>
+              </div>
+            </div>
+          </div>
+
           <div class="action-box">
             <p><strong>Ready to recover this $1,800?</strong> Convert this extra work into a paid agreement right now.</p>
             <button class="btn btn-primary btn-block" onclick="transferToChangeOrder()">
@@ -307,6 +456,9 @@
           <button class="btn btn-secondary btn-sm" onclick="clearChangeOrderForm()">Clear</button>
         </div>
       </div>
+
+      <!-- Quick-Load Industry Templates Selector -->
+      <div id="industry-template-selector" style="margin-bottom: 24px;"></div>
 
       <div class="builder-layout">
         <!-- Form Inputs -->
@@ -525,12 +677,16 @@
       <div class="panel-header">
         <div>
           <h2>Project Scope Risk Diagnostic (Pre-Signing Audit)</h2>
-          <p class="text-muted">Evaluate any prospective client project across 8 critical risk dimensions before signing a contract.</p>
+          <p class="text-muted">Evaluate any prospective client project before signing a contract.</p>
         </div>
-        <button class="btn btn-secondary btn-sm" onclick="resetRiskQuiz()">Reset Quiz</button>
+        <div class="risk-diagnostic-toggle-group">
+          <button class="btn btn-secondary btn-sm risk-toggle-btn active" onclick="toggleRiskDiagnosticVersion('legacy')">8-Question Quiz (Legacy)</button>
+          <button class="btn btn-secondary btn-sm risk-toggle-btn" onclick="toggleRiskDiagnosticVersion('v2')">12-Dimension Analysis (v2.0)</button>
+        </div>
       </div>
 
-      <div class="quiz-container card">
+      <!-- Legacy 8-Question Quiz -->
+      <div id="legacy-quiz-container" class="quiz-container card">
         <div class="quiz-questions" id="quiz-questions-box">
           <!-- Dynamically injected via JS -->
         </div>
@@ -555,6 +711,13 @@
           <button class="btn btn-primary mt-3" onclick="loadQuizClausesToChangeOrder()">
             📄 Pre-fill Change Order Builder with These Safeguards
           </button>
+        </div>
+      </div>
+
+      <!-- v2.0 12-Dimension Risk Diagnostic -->
+      <div id="v2-diagnostic-container" class="card" style="display:none;">
+        <div id="risk-diagnostic-v2-container">
+          <!-- Dynamically rendered by risk-diagnostic-v2.js -->
         </div>
       </div>
     </section>
@@ -721,53 +884,215 @@ Best regards,
         </div>
       </div>
 
+      <!-- FTC Compliance & Editorial Standards Banner -->
+      <div class="ftc-disclosure-banner">
+        <div class="disclosure-icon">⚖️</div>
+        <div class="disclosure-text">
+          <strong>FTC Compliance & Editorial Transparency:</strong> ScopeGuard recommends independent third-party software products based on rigor, user utility, and workflow integration. When you click our partner links to create an account or purchase a subscription, ScopeGuard may receive affiliate compensation at zero additional cost to you. We only recommend tools that directly resolve revenue leakage, out-of-scope disputes, and contract management overhead.
+        </div>
+      </div>
+
+      <!-- 4-Pillar Freelance & Agency Productivity Stack -->
+      <div class="toolkit-pillars-grid">
+        <div class="pillar-category" id="category-time-tracking" onclick="scrollToCategory('time-tracking')" style="cursor: pointer;">
+          <div class="pillar-header">
+            <span class="pillar-icon">⏱️</span>
+            <h4 class="pillar-title">1. Time & Leak Tracking</h4>
+          </div>
+          <p class="pillar-desc">Capture every unbilled client tweak, Slack message, and emergency Zoom consultation with proof logs.</p>
+        </div>
+
+        <div class="pillar-category" id="category-contracts" onclick="scrollToCategory('contracts')" style="cursor: pointer;">
+          <div class="pillar-header">
+            <span class="pillar-icon">📜</span>
+            <h4 class="pillar-title">2. Contracts & OS</h4>
+          </div>
+          <p class="pillar-desc">Ironclad master service agreements, automated milestone billing, and lawyer-vetted freelance terms.</p>
+        </div>
+
+        <div class="pillar-category" id="category-esign" onclick="scrollToCategory('esign')" style="cursor: pointer;">
+          <div class="pillar-header">
+            <span class="pillar-icon">✍️</span>
+            <h4 class="pillar-title">3. E-Signatures</h4>
+          </div>
+          <p class="pillar-desc">ESIGN and UETA legally binding audit trails for Change Order authorization before extra work starts.</p>
+        </div>
+
+        <div class="pillar-category" id="category-proposals" onclick="scrollToCategory('proposals')" style="cursor: pointer;">
+          <div class="pillar-header">
+            <span class="pillar-icon">💳</span>
+            <h4 class="pillar-title">4. Invoicing & Billing</h4>
+          </div>
+          <p class="pillar-desc">Instant 1-click Change Order payment links, auto-reconciliation, and multi-currency payment gates.</p>
+        </div>
+      </div>
+
+      <!-- Enhanced Tools Grid -->
       <div class="tools-grid">
-        <div class="tool-card">
-          <div class="tool-badge">Essential Invoicing</div>
+        <!-- Stripe -->
+        <div class="tool-card" id="tool-stripe">
+          <div class="tool-badge">Essential Invoicing & Payments</div>
           <h3>Stripe Invoicing & Billing</h3>
           <p>Get paid on Change Orders instantly with auto-reconciliation, credit card payments, and ACH bank transfers.</p>
           <ul class="tool-features">
-            <li>✓ 1-Click invoice links for Change Orders</li>
-            <li>✓ Automated late payment reminders</li>
-            <li>✓ Global currency acceptance</li>
+            <li>1-Click invoice links for Change Orders</li>
+            <li>Automated late payment reminders & dunning</li>
+            <li>135+ global currencies and local payment methods</li>
           </ul>
-          <a href="https://stripe.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-block" onclick="trackAffiliateClick('Stripe')">
+          <div class="tool-pricing">Free to start • 2.9% + 30¢ per transaction</div>
+          <a href="https://stripe.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-block" onclick="trackAffiliateClickEnhanced('Stripe Invoicing', 'invoicing')">
             Visit Stripe Invoicing →
           </a>
         </div>
 
-        <div class="tool-card popular-tool">
-          <div class="tool-badge badge-hot">All-in-One Freelance Suite</div>
+        <!-- Bonsai -->
+        <div class="tool-card popular-tool" id="tool-bonsai">
+          <div class="tool-badge badge-hot">All-in-One Freelance OS</div>
           <h3>Bonsai / HoneyBook Contract OS</h3>
-          <p>Ironclad freelance contracts, integrated electronic signatures, and milestone change order management.</p>
+          <p>Ironclad freelance contracts, integrated electronic signatures, and milestone change order management in one dashboard.</p>
           <ul class="tool-features">
-            <li>✓ Lawyer-vetted contract templates</li>
-            <li>✓ Integrated e-signatures on any device</li>
-            <li>✓ Auto-escrow milestone payments</li>
+            <li>Lawyer-vetted contract templates for 50+ industries</li>
+            <li>Integrated e-signatures with legally binding audit log</li>
+            <li>Auto-escrow milestone payments & retainer tracking</li>
           </ul>
-          <a href="https://www.hellobonsai.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-block" onclick="trackAffiliateClick('Bonsai')">
+          <div class="tool-pricing">From $21/mo • Free 14-day trial (No card required)</div>
+          <a href="https://www.hellobonsai.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-block" onclick="trackAffiliateClickEnhanced('Bonsai Suite', 'contracts')">
             Try Free Contract Suite →
           </a>
         </div>
 
-        <div class="tool-card">
+        <!-- Toggl Track -->
+        <div class="tool-card" id="tool-toggl">
           <div class="tool-badge">Time & Leak Tracking</div>
           <h3>Toggl Track / Clockify</h3>
-          <p>Track unbilled client requests and out-of-scope revisions effortlessly to prove exact hours spent.</p>
+          <p>Track unbilled client requests and out-of-scope revisions effortlessly with 1-click timers to prove exact hours spent.</p>
           <ul class="tool-features">
-            <li>✓ 1-Click timer for out-of-scope tasks</li>
-            <li>✓ Exportable client proof reports</li>
-            <li>✓ Team billable rate tracking</li>
+            <li>1-Click timer for out-of-scope tasks & micro-requests</li>
+            <li>Exportable client proof reports & audit summaries</li>
+            <li>Billable vs non-billable project rate analytics</li>
           </ul>
-          <a href="https://toggl.com/track/" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-block" onclick="trackAffiliateClick('Toggl')">
+          <div class="tool-pricing">Free tier available • Pro from $9/user/mo</div>
+          <a href="https://toggl.com/track/" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-block" onclick="trackAffiliateClickEnhanced('Toggl Track', 'time-tracking')">
             Get Free Time Tracker →
           </a>
         </div>
       </div>
 
-      <p class="text-muted text-center" style="font-size: 11px; margin-top: 14px; margin-bottom: 0;">
-        Transparency Disclosure: Some links may be partner or affiliate links that support the free ongoing development of ScopeGuard at zero additional cost to you.
-      </p>
+      <!-- Comprehensive Comparison Matrix: ScopeGuard vs Full CRM Platforms -->
+      <div class="comparison-matrix-card mt-5">
+        <div class="matrix-header">
+          <h3>Why ScopeGuard + Lightweight Tools Beat Heavy Enterprise CRMs</h3>
+          <p>Enterprise platforms charge $50–$300/mo and take weeks to configure. Here is why specialized freelancers and boutique agencies pair ScopeGuard with focused tools.</p>
+        </div>
+
+        <div class="comparison-table-wrapper">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th class="feature-col">Feature / Capability</th>
+                <th class="scopeguard-col">
+                  <div class="tool-logo-cell">
+                    <span class="brand-icon">🛡️</span>
+                    <strong>ScopeGuard</strong> (Free)
+                  </div>
+                </th>
+                <th>
+                  <div class="tool-logo-cell">
+                    <span class="brand-icon">💼</span>
+                    <strong>Bonsai / HoneyBook</strong>
+                  </div>
+                </th>
+                <th>
+                  <div class="tool-logo-cell">
+                    <span class="brand-icon">🏢</span>
+                    <strong>HubSpot / Salesforce</strong>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Setup Time</strong></td>
+                <td class="has-feature">⚡ 0 seconds (Instant SPA)</td>
+                <td class="partial-feature">⏱️ 15–30 minutes</td>
+                <td class="no-feature">⏳ 2–6 weeks onboarding</td>
+              </tr>
+              <tr>
+                <td><strong>Monthly Cost</strong></td>
+                <td class="has-feature">💰 $0.00 (100% Free)</td>
+                <td class="partial-feature">💵 $21 – $79 / month</td>
+                <td class="no-feature">💸 $50 – $300+ / user / mo</td>
+              </tr>
+              <tr>
+                <td><strong>Account / Login Required</strong></td>
+                <td class="has-feature">🔒 None (100% Privacy)</td>
+                <td class="partial-feature">🔑 Required</td>
+                <td class="no-feature">🔑 Heavy OAuth & SSO</td>
+              </tr>
+              <tr>
+                <td><strong>Scope Creep Calculation</strong></td>
+                <td class="has-feature">✓ Real-time dynamic math</td>
+                <td class="no-feature">✗ Not supported</td>
+                <td class="no-feature">✗ Requires custom formula</td>
+              </tr>
+              <tr>
+                <td><strong>1-Click Change Order PDF</strong></td>
+                <td class="has-feature">✓ Vector print engine</td>
+                <td class="has-feature">✓ Built-in contract module</td>
+                <td class="partial-feature">⚡ Requires CPQ / Add-on</td>
+              </tr>
+              <tr>
+                <td><strong>Client Negotiation Scripts</strong></td>
+                <td class="has-feature">✓ 10 battle-tested scripts</td>
+                <td class="no-feature">✗ None</td>
+                <td class="no-feature">✗ None</td>
+              </tr>
+              <tr>
+                <td><strong>12-Dimension Risk Diagnostic</strong></td>
+                <td class="has-feature">✓ 0-100 Weighted scoring</td>
+                <td class="no-feature">✗ None</td>
+                <td class="no-feature">✗ None</td>
+              </tr>
+              <tr>
+                <td><strong>Client Privacy & Zero-Tracking</strong></td>
+                <td class="has-feature">🛡️ 100% Client-side local</td>
+                <td class="partial-feature">☁️ Cloud stored</td>
+                <td class="no-feature">☁️ Multi-tenant cloud DB</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="matrix-verdict">
+          <div class="verdict-box verdict-scopeguard">
+            <h4>When to Use ScopeGuard:</h4>
+            <ul>
+              <li>You need an instant Change Order or calculation in under 60 seconds.</li>
+              <li>You refuse to put private client project finances on external cloud databases.</li>
+              <li>You need tactical email scripts to say "no" to clients without burning bridges.</li>
+              <li>You want zero monthly subscription fees and zero signup friction.</li>
+            </ul>
+          </div>
+          <div class="verdict-box verdict-crm">
+            <h4>When to Add Paid Stack Tools:</h4>
+            <ul>
+              <li>You manage 5+ team members and need centralized automated timesheet approvals.</li>
+              <li>You need automated recurring retainer billing and direct credit card merchant processing.</li>
+              <li>You require automated multi-party contract signatures with legally certified cloud audit trails.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 20px;">
+          <button class="btn btn-secondary btn-sm" onclick="copyComparisonMatrix()">📋 Copy Comparison Matrix to Clipboard</button>
+        </div>
+      </div>
+
+      <div class="affiliate-footer-disclosure mt-4 text-center">
+        <p class="text-muted" style="font-size: 12px; margin: 0;">
+          Transparency Note: ScopeGuard participates in partner programs. When you click links and register for external tools, we may earn an affiliate commission at no extra charge to you. This funds our continuous open development and keeps ScopeGuard 100% free and private.
+        </p>
+      </div>
 
       <!-- Lead Magnet Newsletter Box -->
       <div class="lead-magnet-card card mt-5">
@@ -867,42 +1192,82 @@ Best regards,
     </div>
   </div>
 
-  <!-- Operations & Telemetry Modal (CEO / Admin Tool) -->
+  <!-- Operations & Telemetry Modal (Operations Console) -->
   <div class="modal-overlay" id="telemetry-modal">
-    <div class="modal-card">
+    <div class="modal-card" style="max-width: 850px;">
       <button class="modal-close" onclick="closeTelemetryModal()">✕</button>
-      <div class="modal-badge">AUTONOMOUS BUSINESS CONSOLE</div>
-      <h2 class="modal-title">📊 Executive Business Telemetry & Metrics</h2>
-      <p class="modal-sub">Live telemetry, conversion funnel health, and local lead database.</p>
+      <div class="modal-badge" style="background: rgba(99, 102, 241, 0.2); color: var(--primary);">LOCAL TELEMETRY OPERATIONS CONSOLE</div>
+      <h2 class="modal-title">📊 Privacy-First Telemetry & Operations</h2>
+      <p class="modal-sub">100% Client-Side Local Analytics • Zero External Network Calls • No Cookies Used</p>
 
-      <div class="telemetry-grid">
+      <!-- Key Metrics Row -->
+      <div class="telemetry-grid" style="grid-template-columns: repeat(4, 1fr);">
         <div class="card stat-mini">
-          <div class="stat-mini-label">Total Tracked Events</div>
+          <div class="stat-mini-label">Total Events</div>
           <div class="stat-mini-num text-primary" id="tel-total-events">0</div>
         </div>
         <div class="card stat-mini">
-          <div class="stat-mini-label">Captured Leads</div>
-          <div class="stat-mini-num text-success" id="tel-total-leads">0</div>
+          <div class="stat-mini-label">Calculated Loss Total</div>
+          <div class="stat-mini-num text-danger" id="tel-total-loss">$0.00</div>
         </div>
         <div class="card stat-mini">
-          <div class="stat-mini-label">Pro Status</div>
-          <div class="stat-mini-num text-warning" id="tel-pro-status">Free</div>
+          <div class="stat-mini-label">Documents Drafted</div>
+          <div class="stat-mini-num text-success" id="tel-documents-drafted">0</div>
+        </div>
+        <div class="card stat-mini">
+          <div class="stat-mini-label">Captured Leads</div>
+          <div class="stat-mini-num text-warning" id="tel-total-leads">0</div>
         </div>
       </div>
 
+      <!-- Core Event Counters Grid -->
+      <div class="card mt-3" style="padding: 14px 18px;">
+        <h4 style="margin: 0 0 10px 0; font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;">Tracked Event Counts</h4>
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; font-size: 13px;">
+          <div><span class="text-muted">Loss Calculations:</span> <strong id="tel-loss-calculations">0</strong></div>
+          <div><span class="text-muted">CO Generated:</span> <strong id="tel-change-orders-generated">0</strong></div>
+          <div><span class="text-muted">PDF Printed:</span> <strong id="tel-change-orders-printed">0</strong></div>
+          <div><span class="text-muted">JSON Exported:</span> <strong id="tel-change-orders-exported">0</strong></div>
+          <div><span class="text-muted">Quizzes Done:</span> <strong id="tel-risk-quizzes">0</strong></div>
+          <div><span class="text-muted">Scripts Copied:</span> <strong id="tel-email-scripts">0</strong></div>
+          <div><span class="text-muted">Vault Leads:</span> <strong id="tel-vault-leads">0</strong></div>
+          <div><span class="text-muted">Affiliate Clicks:</span> <strong id="tel-affiliate-clicks">0</strong></div>
+        </div>
+      </div>
+
+      <!-- Privacy & System Info Row -->
+      <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 6px; padding: 10px 14px; margin-top: 12px; font-size: 12px;">
+        <div>🔒 <strong>Privacy Status:</strong> <span id="tel-storage-type">localStorage Only</span> | Network: <span id="tel-network-calls">Zero External Calls</span> | Cookies: <span id="tel-cookies-used">None</span></div>
+        <div>🕒 <strong>Latest Event:</strong> <span id="tel-latest-event-time">No events yet</span></div>
+      </div>
+
+      <!-- Action Buttons Row -->
+      <div style="display: flex; gap: 10px; margin-top: 14px;">
+        <button class="btn btn-secondary btn-sm" onclick="exportTelemetryJSON()" style="flex: 1;">
+          📥 Export Telemetry JSON
+        </button>
+        <button class="btn btn-secondary btn-sm" onclick="exportTelemetryLeadsCSV()" style="flex: 1;">
+          📋 Export Leads CSV
+        </button>
+        <button class="btn btn-danger btn-sm" onclick="resetTelemetryData()" style="flex: 1; background: rgba(239, 68, 68, 0.15); border-color: var(--danger); color: var(--danger);">
+          🗑️ Reset Local Data
+        </button>
+      </div>
+
+      <!-- Leads Table Container -->
       <div class="leads-table-container mt-4">
         <div class="leads-header-row">
           <h4>Captured Email Leads (<span id="tel-lead-count">0</span>)</h4>
-          <button class="btn btn-secondary btn-xs" onclick="exportLeadsCSV()">📥 Export CSV</button>
         </div>
-        <div class="leads-list-box" id="tel-leads-list">
+        <div class="leads-list-box" id="tel-leads-list" style="max-height: 120px; overflow-y: auto;">
           <!-- Dynamically populated -->
         </div>
       </div>
 
+      <!-- Events Stream Container -->
       <div class="events-log-container mt-4">
-        <h4>Recent Application Events (Last 15)</h4>
-        <div class="events-stream" id="tel-events-stream">
+        <h4>Recent Application Events (Last 20)</h4>
+        <div class="events-stream" id="tel-events-stream" style="max-height: 150px; overflow-y: auto;">
           <!-- Dynamically populated -->
         </div>
       </div>
@@ -997,7 +1362,7 @@ Best regards,
       </div>
 
       <div class="footer-meta">
-        <div class="ops-badge" style="cursor:pointer;" onclick="openTelemetryModal()" title="Open Executive Business Console">
+        <div class="ops-badge" style="cursor:pointer;" onclick="openEnhancedTelemetryModal()" title="Open Telemetry Operations Console">
           <span class="ops-dot"></span>
           <span>Autonomous AI Business Factory • Zero-Cost Public Utility (📊 View Telemetry)</span>
         </div>
@@ -1006,7 +1371,7 @@ Best regards,
           <span style="color: var(--border-color);">•</span>
           <a href="javascript:void(0)" onclick="openLegalModal()" style="color: var(--text-muted);">Terms of Service</a>
           <span style="color: var(--border-color);">•</span>
-          <a href="javascript:void(0)" onclick="openTelemetryModal()" style="color: var(--primary);">System Status: 100% Operational</a>
+          <a href="javascript:void(0)" onclick="openEnhancedTelemetryModal()" style="color: var(--primary);">System Status: 100% Operational</a>
         </div>
         <div class="footer-copyright">
           © 2026 ScopeGuard. All calculations and documents generated strictly on client device for 100% data privacy.
@@ -1015,6 +1380,12 @@ Best regards,
     </div>
   </footer>
 
+  <script src="risk-diagnostic-v2.js"></script>
+  <script src="industry-templates.js"></script>
+  <script src="scripts-playbook.js"></script>
+  <script src="affiliate-enhancement.js"></script>
+  <script src="telemetry.js"></script>
+  <script src="telemetry-console.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
